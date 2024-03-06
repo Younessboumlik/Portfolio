@@ -1,7 +1,7 @@
 const mysql1 = require('mysql')
 
 const db = mysql1.createConnection({
-    host:'http://sql11.freesqldatabase.com',
+    host:'sql11.freesqldatabase.com',
     user : 'sql11688952',
     password : 'BTDEuLF25K',
     database : 'sql11688952',
@@ -12,7 +12,7 @@ db.connect((err) => {
     if (err) throw err;
     console.log('Connected to the database.');
 
-    let sql = 'SELECT * FROM USER'; // Replace with your SQL query
+    let sql = 'SELECT * FROM Users'; // Replace with your SQL query
     db.query(sql, (err, result) => {
         if (err) throw err;
         console.log(result);
