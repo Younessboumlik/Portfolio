@@ -6,3 +6,36 @@
 ul{
     list-style-type: none;
 }
+
+a{
+    text-decoration: none;
+}
+
+nav{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: antiquewhite;
+}
+.menu ul{
+    display: flex;
+    gap: 40px;
+}
+
+.buttons button{
+    height: 35px;
+    width:130px;
+    border-radius: 15px;
+    font-size: 15px;
+    background-color:rgb(118, 232, 194);
+}
+
+.buttons button:hover{
+    background-color:rgb(190, 255, 233);
+}
+
+.buttons button:active{
+    background-color:rgb(254, 255, 255);
+
+}
