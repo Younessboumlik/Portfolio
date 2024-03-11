@@ -76,9 +76,13 @@ main button{
     background-size:cover;
     background-position: center;
     color:rgb(0, 0, 0);
+    border-color: #9fd1ff;
+    border: solid 4px #9fd1ff;
+    border-radius: 10px;
 }
 main button:hover{
     font-size: 80px;
+    background-size: 105%;
 }
 .courses{
     background: linear-gradient(rgb(255, 255, 255,0.7), rgba(255, 255, 255, 0.7)),url(images/background1.jpg);
@@ -108,4 +112,5 @@ main button:hover{
 
 footer{
     background: antiquewhite;
+    /* height:60px; */
 }
