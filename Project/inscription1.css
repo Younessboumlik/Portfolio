@@ -1,0 +1,54 @@
+body{
+    background-color: rgb(181, 181, 181);
+}
+
+div{
+    background-color: rgb(136, 205, 205);
+    text-align: center;
+    width: 40%;
+    margin: auto;
+    margin-top: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    box-shadow: 5px 5px 20px rgb(136, 162, 162);
+    border-radius: 10px;
+  
+}
+h1{
+    position: relative;
+    margin-top: 3%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#etudiant{
+    margin-right: 10%;
+    
+}
+.but{
+    height: 70px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+     background-color: rgb(27, 85, 94);
+     box-shadow: 5px 5px 20px rgb(136, 162, 162);
+     color: azure;
+}
+#etudiant:active{
+    background-color: aliceblue;
+}
+#professeur:active{
+    background-color: aliceblue;
+}
+.but:hover{
+    background-color: rgb(192, 255, 255);
+    color: darkcyan;
+}
+h2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(255, 195, 207);
+    text-align: center;
+    width: 60%;margin-left: 20%;
+    color: red;
+    border-radius: 6px;
+    box-shadow: 5px 5px 20px rgb(136, 162, 162);;
+}

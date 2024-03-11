@@ -11,17 +11,17 @@
 <body>
     <div class="login">
         <h1>Login</h1>
-        <form action="" method="get">
+        <form action="/home/me" method="post">
             <div class="form">
                 <div class="email">
                     <label for="email" class = "translatetextemail">Email</label>
-                    <input id="email" type="email" placeholder="Enter Your Email" required>
+                    <input id="email" type="email" placeholder="Enter Your Email" required name = "email">
                 </div>
                 <div class="password">
-                    <label for="password" class = "translatetextpassword">Password</label>
-                    <input id="password" type="password" required minlength="8" placeholder="Enter Your Password">
+                    <label for="password" class = "translatetextpassword" >Password</label>
+                    <input id="password" type="password" required minlength="8" placeholder="Enter Your Password" name = "password" >
                 </div>
-                <input type="submit" value="Log in" id="submitlogin">
+                <input type="submit" name = "submit" value="Log in" id="submitlogin">
             </div>
         </form>
         <div class="createaccount">
