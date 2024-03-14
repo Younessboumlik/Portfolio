@@ -19,11 +19,12 @@ b.query("select * from Users;", function(err, result) {
 const app = exp();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(exp.static(__dirname + '/public'));
+app.set("view engine","ejs");
 // parse application/json
 app.use(bodyParser.json());
 app.get('/' ,(req,res) => {
-    res.sendFile("./views/home.html",{root : __dirname})
+    res.sendFile("./Project/main.html",{root : __dirname})
 })
 app.get('/login' ,(req,res) => {
     res.sendFile("./Project/index.html",{root : __dirname})
@@ -31,7 +32,7 @@ app.get('/login' ,(req,res) => {
 
 app.post('/home/me' ,(req,res) => {console.log(req.body.email)
     email = req.body.email;
-    res.sendFile("./views/home.html",{root : __dirname})})
+    res.sendFile("./Project/homeaftersignin.html",{root : __dirname})})
 app.get('/inscription', (req,res) => {
     if (email === undefined){
       res.sendFile('./views/gologin.html',{root : __dirname})
@@ -42,5 +43,15 @@ app.get('/inscription', (req,res) => {
 })
 app.get('/inscription/etudiant' ,(req,res) => {
     res.sendFile("./Project/etudianrinscri.html",{root : __dirname})
+
 })
-app.listen(1119,() => (console.log("https://localhost:5009/")))
+app.get('/createaccount' ,(req,res) => {
+    res.sendFile("./Project/createaccount.html",{root : __dirname})
+
+})
+app.get('/profile' ,(req,res) => {
+    res.render("profile",{mail:email})
+
+})
+
+app.listen(2266,() => (console.log("https://localhost:2228")))

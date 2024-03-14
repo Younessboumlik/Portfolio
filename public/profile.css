@@ -1,0 +1,23 @@
+#cover{
+    height: 200px;
+    background-color: gray;
+    border-radius: 20px;
+}
+#img{
+    height: 250px;
+    width: 250px;
+    background-color: rgb(155, 155, 155);
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    border-radius: 70px;
+    transition: transform 1s ease-out;
+    box-shadow: 1px 1px 15px rgb(0, 0, 0);
+}
+#img:hover{
+    transform: scale(105%,105%);
+    transition-duration: 1s;
+}
+#email{
+    margin-top: 300px;
+}
