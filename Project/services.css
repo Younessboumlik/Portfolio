@@ -1,0 +1,96 @@
+*{
+    margin : 0;
+    padding: 0;
+}
+
+body{
+    background-color:aliceblue;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: antiquewhite;
+}
+.menu ul{
+    display: flex;
+    gap: 40px;
+}
+
+.buttons button{
+    height: 35px;
+    width:130px;
+    border-radius: 15px;
+    font-size: 15px;
+    background-color:rgb(118, 232, 194);
+}
+
+.buttons button:hover{
+    background-color:rgb(190, 255, 233);
+}
+
+.buttons button:active{
+    background-color:rgb(254, 255, 255);
+
+}
+.header{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.span{
+    color:brown;
+}
+
+.services{
+    height:300px;
+    margin-top:50px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    font-family:cursive;
+}
+/* for all the choices */
+.soutien,.languages,.softskills{
+    width:300px;
+    text-align: center;
+    border-radius: 20px;
+    border:3px black solid;
+    padding: 20px;
+    font-size: 25px;
+}
+.soutien:hover,.languages:hover,.softskills:hover{
+    color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor:pointer
+}
+.soutien:active,.languages:active,.softskills:active{
+    background-size: 170%;
+}
+/* now for each one of them */
+
+.soutien:hover{
+    background-image: url(images/education.jpg);
+}
+
+.languages:hover{
+    background-image: url(images/languages.jpg);
+}
+.softskills:hover{
+    background-image: url(images/softskills.jpg);
+}

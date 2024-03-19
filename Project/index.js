@@ -1,4 +1,4 @@
-const mysql1 = require('mysql')
+const mysql1 = require('mysql2')
 
 const db = mysql1.createConnection({
     host:'sql11.freesqldatabase.com',
@@ -11,10 +11,11 @@ const db = mysql1.createConnection({
 db.connect((err) => {
     if (err) throw err;
     console.log('Connected to the database.');
-
-    let sql = 'SELECT * FROM Users'; // Replace with your SQL query
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        console.log(result);
-    });
 });
+let sql = 'SELECT * FROM Users';
+
+
+result = db.query(sql);
+
+
+console.log(result);
