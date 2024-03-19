@@ -1,6 +1,7 @@
 // let a = require('mysql')
 let exp = require("express")
-let email = undefined
+let email = undefined;
+let id = undefined ;
 function Query(){
 b = a.createConnection({host :'sql11.freesqldatabase.com' ,  user: "sql11688952" , password:"BTDEuLF25K" ,port :"3306"})
 b.connect(function(err) {
@@ -32,6 +33,11 @@ app.get('/login' ,(req,res) => {
 
 app.post('/home/me' ,(req,res) => {console.log(req.body.email)
     email = req.body.email;
+    // b.query(`select * from Users where email = ${email} and ;`, function(err, result) {
+    //     if (err) throw err;
+    //     console.log("Result:", result);})
+    console.log(email)
+
     res.sendFile("./Project/homeaftersignin.html",{root : __dirname})})
 app.get('/inscription', (req,res) => {
     if (email === undefined){
@@ -54,4 +60,4 @@ app.get('/profile' ,(req,res) => {
 
 })
 
-app.listen(2277,() => (console.log("https://localhost:2228")))
+app.listen(2299,() => (console.log("https://localhost:2228")))
