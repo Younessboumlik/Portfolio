@@ -10,7 +10,7 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    status ENUM('professor', 'student') NOT NULL
+    status ENUM('professor', 'student')
 );
 
 -- Create the Services table

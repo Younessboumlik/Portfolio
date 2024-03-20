@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    border-style: none;
+}
+
 body{
     background-color:aliceblue;
 }
@@ -27,7 +31,7 @@ nav{
     gap: 40px;
 }
 
-.buttons button{
+.buttons button,.soutien{
     height: 35px;
     width:130px;
     border-radius: 15px;
@@ -35,11 +39,11 @@ nav{
     background-color:rgb(118, 232, 194);
 }
 
-.buttons button:hover{
+.buttons button:hover , .soutien:hover {
     background-color:rgb(190, 255, 233);
 }
 
-.buttons button:active{
+.buttons button:active, .soutien:active{
     background-color:rgb(254, 255, 255);
 
 }
