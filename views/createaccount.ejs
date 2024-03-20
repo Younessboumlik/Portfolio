@@ -9,27 +9,30 @@
 </head>
 
 <body>
+    <% if (checkcreataccount){%>
+    <h1 id = "errorcreataccount">error :this email is already used</h1>
+    <%}%>
     <div class="create">
         <h1>Create Account</h1>
-        <form action="" method="get">
+        <form action="/home/me" method="post">
             <div class="form">
                 <div class="email">
                     <label for="email" class = "textfirst">First Name</label>
-                    <input id="email" type = "text"  placeholder="Enter Your First Name" required>
+                    <input id="email" type = "text"  placeholder="Enter Your First Name" required name = "first_name">
                 </div>
                 <div class="email">
                     <label for="email" class = "textlast">Last Name</label>
-                    <input id="email" type="text" placeholder="Enter Your Last Name" required>
+                    <input id="email" type="text" placeholder="Enter Your Last Name" required name = "last_name">
                 </div>
                 <div class="email">
                     <label for="email" class = "translatetextemail">Email</label>
-                    <input id="email" type="email" placeholder="Enter Your Email" required>
+                    <input id="email" type="email" placeholder="Enter Your Email" required name = "email">
                 </div>
                 <div class="password">
                     <label for="password" class = "translatetextpassword">Password</label>
-                    <input id="password" type="password" required minlength="8" placeholder="Enter Your Password">
+                    <input id="password" type="password" required minlength="8" placeholder="Enter Your Password" name = "password">
                 </div>
-                <input type="submit" value="Log in" id="submitlogin">
+                <input type="submit" name = "submit" value="creatacc" id="submitlogin">
             </div>
         </form>
         <div class="createaccount">
