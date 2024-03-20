@@ -24,7 +24,7 @@ app.get('/' ,(req,res) => {
     res.sendFile("./Project/main.html",{root : __dirname})
 })
 app.get('/login' ,(req,res) => {
-    res.sendFile("./Project/index.html",{root : __dirname})
+    res.render("index",{checknotlogin:false});
 })
 
 app.post('/home/me' ,(req,res) => {console.log(req.body.email)
@@ -44,6 +44,19 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
            res.render("createaccount",{checkcreataccount:true})
          }})
     
+    }
+    if (req.body.submit === "Log in"){
+        db.query(`select * from Users where email = ? and password = ?`,[req.body.email,req.body.password],function(err,result){
+        console.log(result);
+        if (err) throw err;
+        query_result = result
+            if(query_result.length === 0){
+                res.render("index",{checknotlogin:true})
+            }
+            else{
+                res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+            }
+    })
     }
  })
 app.get('/inscription', (req,res) => {

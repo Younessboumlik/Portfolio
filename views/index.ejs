@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <% if (checknotlogin) {%>
+        <h1 id =errorlogin>error: the password or email does not match </h1>
+    <%}%>
     <div class="login">
         <h1>Login</h1>
         <form action="/home/me" method="post">
@@ -19,7 +22,7 @@
                 </div>
                 <div class="password">
                     <label for="password" class = "translatetextpassword" >Password</label>
-                    <input id="password" type="password" required minlength="8" placeholder="Enter Your Password" name = "password" >
+                    <input id="password" type="password" placeholder="Enter Your Password" name = "password" required name = "password">
                 </div>
                 <input type="submit" name = "submit" value="Log in" id="submitlogin">
             </div>
