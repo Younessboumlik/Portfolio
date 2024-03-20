@@ -45,7 +45,7 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
          }})
     
     }
- })
+    res.sendFile("./Project/homeaftersignin.html",{root : __dirname})})
 app.get('/inscription', (req,res) => {
     if (email === undefined){
       res.sendFile('./views/gologin.html',{root : __dirname})
@@ -72,5 +72,13 @@ app.get('/services' ,(req,res) => {
 app.get('/courses' ,(req,res) => {
     res.sendFile("./Project/courses.html",{root : __dirname})
 })
+app.post('/getelemnts',(req,res) =>{
+    var id_service = req.body.id_service;
+    console.log(id_service)
+    db.query("select course_id,label from Courses where service_id = ?",[id_service],function(err,result){
+        console.log(result)
+        res.json({ result });
+    })
 
-app.listen(9222,() => (console.log("https://localhost:2228")))
+})
+app.listen(1115,() => (console.log("https://localhost:2228")))

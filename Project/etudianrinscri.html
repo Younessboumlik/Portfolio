@@ -4,30 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="etudianinscri.css">
+    <link rel="stylesheet" href="/etudianinscri.css">
 </head>
 <body>
     <form id = "form">
     <h1>inscription info</h1>
     <div id = "divser">
         <label id = servicelabel>chooce your service</label>
-        <select id = "service">
-            <option value="1">soutien</option>
-            <option value="2">soft-skills</option>
-            <option value="3">langages</option>
-            <option value="4">devellopement</option>
+        <select id = "service" name = "service">
+            <option value="1">soutient</option>
+            <option value="2">langue</option>
+            <option value="3">soft_skilles</option>
+            <option value="4">computer science</option>
         </select>
     </div>
     <div id = "divcourse">
         <label id = "courslabel">chooce your course</label>
-        <select id = "cours">
-            <option value="1">math</option>
-            <option value="2">phsics</option>
-            <option value="3">arabe</option>
-            <option value="4">python</option>
+        <select id = "cours" name = "course">
         </select>
     </div>
-    <input type="submit" value="save inscription" id = "submit">
+    <input type="submit" value="save inscription" id = "submit" name = "submit">
     </form>
+    <script src = "/etudianrinscri.js"></script>
 </body>
 </html>
