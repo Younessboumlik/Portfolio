@@ -1,6 +1,5 @@
 
 let id_service ;
-console.log("am here hhhhhhh")
 let service = document.getElementById("service")
 let course = document.getElementById("cours")
 service.addEventListener('change',function(){
