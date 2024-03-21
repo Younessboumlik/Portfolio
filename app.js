@@ -36,7 +36,13 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
         if (query_result.length === 0){
             db.query(`insert into Users (email,password,first_name,last_name) values (?, ?, ?, ?)`, [req.body.email, req.body.password, req.body.first_name, req.body.last_name],
             function(err){
-                res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+                db.query("select user_id from Users where email = ?;",[email],function(err,result){
+                    console.log(result)
+                   id = result[0].user_id 
+                   console.log(id)
+                   res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+                })
+               
             })
             
          }
@@ -81,4 +87,22 @@ app.post('/getelemnts',(req,res) =>{
     })
 
 })
-app.listen(1115,() => (console.log("https://localhost:2228")))
+app.post("/endinscription",(req,res) =>{
+  if(req.body.submit === "save inscription student"){
+    var service = req.body.service ;
+    var course = req.body.course;
+    var nbrmois = req.body.nbrmois;
+
+    db.query("select * from Groupes where course_id = ? and num_students < 20;",[course],function(err,result){
+        let grps_result = result
+        if (grps_result.length >0){
+          db.query("Update Groupes set num_students = ? where group_id = ?",[result[0].num_students+1,result[0].group_id],function(err){
+            if (err) {throw err};
+            db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[grps_result[0].num_students,id,grps_result[0].group_id])
+            db.query("Update Users set status = ? where user_id = ?",["student".id])
+            res.sendFile("./Project/endinscription.html",{root : __dirname})
+          })
+        }
+    })
+}})
+app.listen(2226,() => (console.log("https://localhost:2228")))

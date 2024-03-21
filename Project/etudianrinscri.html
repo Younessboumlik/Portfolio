@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/etudianinscri.css">
 </head>
 <body>
-    <form id = "form">
+    <form id = "form" method="post" action="/endinscription">
     <h1>inscription info</h1>
     <div id = "divser">
         <label id = servicelabel>chooce your service</label>
@@ -23,7 +23,11 @@
         <select id = "cours" name = "course">
         </select>
     </div>
-    <input type="submit" value="save inscription" id = "submit" name = "submit">
+    <div id = "nbrmois">
+        <label id = "nbrmoislabel">how much mounth do you want to study</label>
+        <input type="text" id = "textnbrmois" name = "nbrmois">
+    </div>
+    <input type="submit" value="save inscription student" id = "submit" name = "submit">
     </form>
     <script src = "/etudianrinscri.js"></script>
 </body>
