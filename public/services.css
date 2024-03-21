@@ -31,7 +31,7 @@ nav{
     gap: 40px;
 }
 
-.buttons button,.soutien{
+.buttons button{
     height: 35px;
     width:130px;
     border-radius: 15px;
@@ -39,11 +39,11 @@ nav{
     background-color:rgb(118, 232, 194);
 }
 
-.buttons button:hover , .soutien:hover {
+.buttons button:hover{
     background-color:rgb(190, 255, 233);
 }
 
-.buttons button:active, .soutien:active{
+.buttons button:active{
     background-color:rgb(254, 255, 255);
 
 }
