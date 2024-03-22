@@ -111,14 +111,32 @@ app.post("/endinscription",(req,res) =>{
         if (grps_result.length >0){
           db.query("Update Groupes set num_students = ? where group_id = ?",[result[0].num_students+1,result[0].group_id],function(err){
             if (err) {throw err};
-            db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[grps_result[0].num_students,id,grps_result[0].group_id])
+            db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
             db.query("Update Users set status = ? where user_id = ?",["student",id])
             res.sendFile("./Project/endinscription.html",{root : __dirname})
           })
         }
+        else {
+           db.query("insert into Groupes (num_students,course_id) values (?,?)",[1,course],function(err,result){
+            db.query("select * from Groupes where course_id = ? and num_students < 20;",[course],function(err,result){
+                let grps_result = result;
+                db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
+                db.query("Update Users set status = ? where user_id = ?",["student",id])
+                db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
+                ,function(err,result){
+                    if (err) {throw err};
+                    if (result.length >0){
+                      db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
+                      db.query("al")
+                    }
+                })
+                res.sendFile("./Project/endinscription.html",{root : __dirname})
+            })
+           })
+        }
     })
 }})
-app.listen(2227,() => (console.log("https://localhost:2228")))
+app.listen(2226,() => (console.log("https://localhost:2228")))
 
 
 
