@@ -2,6 +2,7 @@ let a = require('mysql')
 let exp = require("express")
 const bodyParser = require('body-parser');
 let email = undefined;
+let user = undefined;
 let id = undefined ;
 query_result = undefined
 // function Query(){
@@ -28,7 +29,7 @@ app.get('/login' ,(req,res) => {
 })
 
 app.post('/home/me' ,(req,res) => {console.log(req.body.email)
-    email = req.body.email;
+    email = req.body.email;    
     if (req.body.submit === "creatacc"){
     db.query(`select * from Users where email = ?;`,[email], function(err, result) {
         if (err) throw err;
@@ -79,11 +80,13 @@ app.get('/inscription/etudiant' ,(req,res) => {
 })
 app.get('/createaccount' ,(req,res) => {
     res.render("createaccount",{checkcreataccount:false})
-
 })
 app.get('/profile' ,(req,res) => {
-    res.render("profile",{mail:email})
-
+    db.query(`select concat(first_name,' ',last_name) as full_name from Users where email = ?`,[email], function(err, result) {
+        if (err) throw err;
+    res.render("profile",{mail:email,full_name:result[0].full_name});
+}
+)
 })
 app.get('/services' ,(req,res) => {
     res.sendFile("./Project/services.html",{root : __dirname})
@@ -140,3 +143,4 @@ app.listen(2226,() => (console.log("https://localhost:2228")))
 
 
 
+app.listen(9232,() => (console.log("http://127.0.0.1:9232/")))

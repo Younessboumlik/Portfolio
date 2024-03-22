@@ -59,6 +59,9 @@ nav{
     color:brown;
 }
 
+main{
+    text-align: center;
+}
 .services{
     height:300px;
     margin-top:50px;
@@ -97,4 +100,17 @@ nav{
 }
 .softskills:hover{
     background-image: url(images/softskills.jpg);
+}
+
+.computer{
+    margin-top: 2%;
+    height:200px;
+    width:400px;
+    text-align: center;
+    font-size: 40px;
+}
+.computer:hover{
+    background-image: url(images/computerscience.jpg);
+    background-repeat: no-repeat;
+    background-position: cover;
 }

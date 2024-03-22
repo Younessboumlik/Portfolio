@@ -61,8 +61,6 @@ CREATE TABLE ProfessorEnrollments (
 CREATE TABLE ProfessorWaitingLists (
     waiting_list_id INT AUTO_INCREMENT PRIMARY KEY,
     enrollment_id INT NOT NULL,
-    group_id INT NOT NULL,
     wait_date DATE NOT NULL,
     FOREIGN KEY (enrollment_id) REFERENCES ProfessorEnrollments(enrollment_id) ON DELETE CASCADE,
-    FOREIGN KEY (group_id) REFERENCES Groupes(group_id)
 );
