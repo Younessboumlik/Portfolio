@@ -76,9 +76,9 @@ app.get('/createaccount' ,(req,res) => {
     res.render("createaccount",{checkcreataccount:false})
 })
 app.get('/profile' ,(req,res) => {
-    db.query(`select first_name from Users where email = ?`,[email], function(err, result) {
+    db.query(`select concat(first_name,' ',last_name) as full_name from Users where email = ?`,[email], function(err, result) {
         if (err) throw err;
-    res.render("profile",{mail:email,full_name:result[0].first_name});
+    res.render("profile",{mail:email,full_name:result[0].full_name});
 }
 )
 })
