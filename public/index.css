@@ -90,3 +90,11 @@ body{
     background-color:white;
     box-shadow: 0px 0px 20px white;
 }
+
+#errorlogin{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(255, 195, 207);
+    text-align: center;
+    width: 60%;margin-left: 20%;
+    color: red;
+}

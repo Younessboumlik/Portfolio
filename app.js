@@ -24,7 +24,7 @@ app.get('/' ,(req,res) => {
     res.sendFile("./Project/main.html",{root : __dirname})
 })
 app.get('/login' ,(req,res) => {
-    res.sendFile("./Project/index.html",{root : __dirname})
+    res.render("index",{checknotlogin:false});
 })
 
 app.post('/home/me' ,(req,res) => {console.log(req.body.email)
@@ -51,7 +51,20 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
          }})
     
     }
-    res.sendFile("./Project/homeaftersignin.html",{root : __dirname})})
+    if (req.body.submit === "Log in"){
+        db.query(`select * from Users where email = ? and password = ?`,[req.body.email,req.body.password],function(err,result){
+        console.log(result);
+        if (err) throw err;
+        query_result = result
+            if(query_result.length === 0){
+                res.render("index",{checknotlogin:true})
+            }
+            else{
+                res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+            }
+    })
+    }
+ })
 app.get('/inscription', (req,res) => {
     if (email === undefined){
       res.sendFile('./views/gologin.html',{root : __dirname})
@@ -99,10 +112,13 @@ app.post("/endinscription",(req,res) =>{
           db.query("Update Groupes set num_students = ? where group_id = ?",[result[0].num_students+1,result[0].group_id],function(err){
             if (err) {throw err};
             db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[grps_result[0].num_students,id,grps_result[0].group_id])
-            db.query("Update Users set status = ? where user_id = ?",["student".id])
+            db.query("Update Users set status = ? where user_id = ?",["student",id])
             res.sendFile("./Project/endinscription.html",{root : __dirname})
           })
         }
     })
 }})
-app.listen(2226,() => (console.log("https://localhost:2228")))
+app.listen(2227,() => (console.log("https://localhost:2228")))
+
+
+

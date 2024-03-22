@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+a{
+    border-style: none;
+}
+
 body{
     background-color:aliceblue;
 }
