@@ -9,8 +9,17 @@
 <body>
 <div id = "cover"></div>
 <div id = "img"></div>
-<h1 id = "full_name"><%= full_name%></h1>
-<h1 id = "email"><%= mail%></h1>
+<h1 id = "first_name"><%= res[0].first_name%></h1>
+<h1 id = "last_name"><%= res[0].last_name%></h1>
+<h1 id = "email"><%= res[0].email%></h1>
+<h1 id = "status"><%= res[0].status%></h1>
+<% for(let i = 0;i<res.length;i++){%>
+    <div>
+        <h1>
+
+        </h1>
+    </div>
+<%}%>
 
 
 </body>

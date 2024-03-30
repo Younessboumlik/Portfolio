@@ -82,9 +82,9 @@ app.get('/createaccount' ,(req,res) => {
     res.render("createaccount",{checkcreataccount:false})
 })
 app.get('/profile' ,(req,res) => {
-    db.query(`select concat(first_name,' ',last_name) as full_name from Users where email = ?`,[email], function(err, result) {
+    db.query(`select * from User,StudentEnrollments,Course,Services where User.user_id  = StudentEnrollments.user_id and User.user_id = ?`,[id], function(err, result) {
         if (err) throw err;
-    res.render("profile",{mail:email,full_name:result[0].full_name});
+    res.render("profile",{res:result});
 }
 )
 })
@@ -139,8 +139,7 @@ app.post("/endinscription",(req,res) =>{
         }
     })
 }})
-app.listen(2226,() => (console.log("https://localhost:2228")))
+app.listen(2225,() => (console.log("https://localhost:2228")))
 
 
 
-app.listen(9232,() => (console.log("http://127.0.0.1:9232/")))
