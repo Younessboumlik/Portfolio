@@ -15,7 +15,6 @@ service.addEventListener('change',function(){
     .then(response => response.json())
     .then(data => {
         console.log(data.result)
-    // Handle the response from the server
     for(let i =0;i<(data.result).length;i++){
 
         var option = document.createElement("option");
@@ -25,7 +24,6 @@ service.addEventListener('change',function(){
     }
     })
     .catch(error => {
-    // Handle errors
     console.error('Error:', error);
     });
 

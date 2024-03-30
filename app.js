@@ -72,6 +72,11 @@ app.get('/inscription/etudiant' ,(req,res) => {
     res.sendFile("./Project/etudianrinscri.html",{root : __dirname})
 
 })
+
+app.get('/inscription/prof' ,(req,res) => {
+    res.sendFile("./Project/profinscription.html",{root : __dirname})
+
+})
 app.get('/createaccount' ,(req,res) => {
     res.render("createaccount",{checkcreataccount:false})
 })
