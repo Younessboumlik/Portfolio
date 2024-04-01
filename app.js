@@ -61,6 +61,10 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
                 res.render("index",{checknotlogin:true})
             }
             else{
+                db.query("select user_id from Users where email = ?;",[email],function(err,result){
+                   id = result[0].user_id 
+            }
+                )
                 res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
             }
     })
@@ -113,6 +117,7 @@ app.post("/endinscription",(req,res) =>{
     var service = req.body.service ;
     var course = req.body.course;
     var nbrmois = req.body.nbrmois;
+    console.log("hmm")
 
     db.query("select * from Groupes where course_id = ? and num_students < 20;",[course],function(err,result){
         let grps_result = result
@@ -130,21 +135,78 @@ app.post("/endinscription",(req,res) =>{
                 let grps_result = result;
                 db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
                 db.query("Update Users set status = ? where user_id = ?",["student",id])
-                db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
-                ,function(err,result){
-                    if (err) {throw err};
-                    if (result.length >0){
-                      db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
-                      db.query("al")
-                    }
-                })
+                // db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
+                // ,function(err,result){
+                //     if (err) {throw err};
+                //     if (result.length >0){
+                //       db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
+                //       db.query("al")
+                //     }
+                // })
                 res.sendFile("./Project/endinscription.html",{root : __dirname})
             })
            })
         }
     })
-}})
-app.listen(2225,() => (console.log("https://localhost:2228")))
+}
+if(req.body.submit === "save inscription prof"){
+    var service = req.body.service ;
+    var course = req.body.course;
+    var nbrmois = req.body.nbrmois;
+    const datetime = new Date();
+    time_enroll = datetime.toISOString().slice(0, 10)
+    
+    db.query("Update Users set status = ? where user_id = ?",["professor",id])
+    db.query("select group_id from Groupes where course_id = ?  AND group_id NOT in (SELECT DISTINCT group_id FROM ProfessorEnrollments);",[course],function(err,result){
+        
+        if(result.length === 0){
+            db.query("INSERT INTO ProfessorEnrollments(num_months,enrollment_date,user_id) VALUES (?,?,?) ",[nbrmois,time_enroll,id])
+            db.query("SELECT max(enrollment_id) as max_enrollment_id FROM ProfessorEnrollments" ,function(err,result){
+            db.query("INSERT INTO ProfessorWaitingLists(enrollment_id,wait_date) VALUES(?,?)",[result[0].max_enrollment_id,time_enroll])                
+        }
+            )
+        }
+        else{
+            let groupe_result = result[0].group_id;
+            db.query("INSERT INTO ProfessorEnrollments(num_months,enrollment_date,user_id,group_id) VALUES (?,?,?,?) ",[nbrmois,time_enroll,id,groupe_result])
+            res.sendFile("./Project/endinscription.html",{root : __dirname})
+
+        }
+    }
+        )
+//     db.query("select * from Groupes where course_id = ? and num_students < 20 ;",[course],function(err,result){
+//         let grps_result = result
+//         if (grps_result.length >0){
+//           db.query("Update Groupes set num_students = ? where group_id = ?",[result[0].num_students+1,result[0].group_id],function(err){
+//             if (err) {throw err};
+//             db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
+//             db.query("Update Users set status = ? where user_id = ?",["student",id])
+//             res.sendFile("./Project/endinscription.html",{root : __dirname})
+//           })
+//         }
+//         else {
+//            db.query("insert into Groupes (num_students,course_id) values (?,?)",[1,course],function(err,result){
+//             db.query("select * from Groupes where course_id = ? and num_students < 20;",[course],function(err,result){
+//                 let grps_result = result;
+//                 db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
+//                 db.query("Update Users set status = ? where user_id = ?",["student",id])
+//                 db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
+//                 ,function(err,result){
+//                     if (err) {throw err};
+//                     if (result.length >0){
+//                       db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
+//                       db.query("al")
+//                     }
+//                 })
+//                 res.sendFile("./Project/endinscription.html",{root : __dirname})
+//             })
+//            })
+//         }
+//     })
+}
+}
+)
+app.listen(2225,() => (console.log("http://127.0.0.1:2225")))
 
 
 

@@ -14,7 +14,7 @@ service.addEventListener('change',function(){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.result)
+        // console.log(data.result)
     for(let i =0;i<(data.result).length;i++){
 
         var option = document.createElement("option");

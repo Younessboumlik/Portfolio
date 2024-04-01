@@ -52,7 +52,7 @@ CREATE TABLE ProfessorEnrollments (
     num_months INT NOT NULL,
     enrollment_date DATE NOT NULL,
     user_id INT NOT NULL,
-    group_id INT NOT NULL,
+    group_id INT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (group_id) REFERENCES Groupes(group_id)
 );

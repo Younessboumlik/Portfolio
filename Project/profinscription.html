@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof</title>
-    <link rel="stylesheet" href="/profinscription.css">
+    <title>Etudiant</title>
+    <link rel="stylesheet" href="/etudianinscri.css">
 </head>
 <body>
-    <form id = "form">
+    <form id = "form" method="post" action="/endinscription">
     <h1>inscription info</h1>
     <div id = "divser">
         <label id = servicelabel>chooce your service</label>
@@ -22,6 +22,10 @@
         <label id = "courslabel">chooce your course</label>
         <select id = "cours" name = "course">
         </select>
+    </div>
+    <div id = "nbrmois">
+        <label id = "nbrmoislabel">how much mounth do you want to study</label>
+        <input type="text" id = "textnbrmois" name = "nbrmois">
     </div>
     <input type="submit" value="save inscription prof" id = "submit" name = "submit">
     </form>
