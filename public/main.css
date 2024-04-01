@@ -93,6 +93,7 @@ main button{
     border-color: #9fd1ff;
     border: solid 4px #9fd1ff;
     border-radius: 10px;
+    transition: 0.5s;
 }
 main button:hover{
     font-size: 80px;
@@ -175,11 +176,58 @@ main button:hover{
     padding-top: 1px;
 }
 
+.theoffers{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    margin: 10px 0px 10px 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+.firstoffer,.secondoffer{
+    padding: 15px;
+    height: 300px;
+    margin: 20px 0px 20px 0px;
+    width:20%;
+    border: black solid 2px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:#ffe771;
+    transition: 1s;
+}
+.firstoffer:hover,.secondoffer:hover{
+background-color:blanchedalmond;
+}
+.theoffers img{
+    height: 200px;
+    width:200px
+}
+.barred{
+    color: red;
+    font-size: 25px;
+}
 /* footer */
 
 footer{
-    background: antiquewhite;
-    /* height:60px; */
+    background: rgb(67, 67, 67);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: white;
+    height:100px;
+    margin-top: 20px;
+    padding: 30px;
+}
+
+footer img{
+    height:200px;
+    width:200px;
+}
+
+.boumlik,.boulidam{
+    align-items: center;
 }
 
 
