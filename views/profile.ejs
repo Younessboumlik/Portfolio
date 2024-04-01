@@ -13,11 +13,46 @@
 <h1 id = "last_name"><%= res[0].last_name%></h1>
 <h1 id = "email"><%= res[0].email%></h1>
 <h1 id = "status"><%= res[0].status%></h1>
+<%if (res[0].status == "student"){%>
 <% for(let i = 0;i<res.length;i++){%>
+    
     <div>
         <h1>
-
+          numero months : <%= res[i].num_months%>
+          
         </h1>
+        <h1>
+            course = <%= res[i].label%>
+        </h1>
+        <h1>
+            service = <%= res[i].label_serv%>
+        </h1>
+        <h1>
+            num Groupe = <%= res[i].group_id%>
+        </h1>
+
+    </div>
+<%}%>
+<%}%>
+<%if (res[0].status == "professor"){%>
+    <div>
+        <h1>
+          numero months : <%= res[i].num_months%>
+          
+        </h1>
+        <h1>
+            course = <%= res[i].label%>
+        </h1>
+        <h1>
+            service = <%= res[i].label_serv%>
+        </h1>
+        <h1>
+            num Groupe = <%= res[i].group_id%>
+        </h1>
+        <h1>
+            enrollment date = <%= res[i].%>
+        </h1>
+
     </div>
 <%}%>
 

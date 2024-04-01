@@ -91,11 +91,28 @@ app.get('/createaccount' ,(req,res) => {
     res.render("createaccount",{checkcreataccount:false})
 })
 app.get('/profile' ,(req,res) => {
-    db.query(`select * from User,StudentEnrollments,Course,Services where User.user_id  = StudentEnrollments.user_id and User.user_id = ?`,[id], function(err, result) {
-        if (err) throw err;
-    res.render("profile",{res:result});
-}
-)
+    db.query("select status from Users where user_id = ?",[id],function(err,result){
+        console.log(result)
+        if (result[0].status == "student"){
+           db.query(`select * from Users,StudentEnrollments,Groupes,Courses,Services where Users.user_id  = StudentEnrollments.user_id and 
+           Users.user_id = ? and StudentEnrollments.group_id = Groupes.group_id and Groupes.course_id = Courses.course_id and
+           Courses.service_id = Services.service_id `,[id], function(err, result) {
+             if (err) throw err;
+           res.render("profile",{res:result});
+       }
+       )
+        }
+       else if (result[0].status == "professor"){
+        db.query(`select * from Users,ProfessorEnrollments,Groupes,Courses,Services where Users.user_id  = StudentEnrollments.user_id and 
+        Users.user_id = ? and ProfessorEnrollments.group_id = Groupes.group_id and Groupes.course_id = Courses.course_id and
+        Courses.service_id = Services.service_id `,[id], function(err, result) {
+          if (err) throw err;
+        res.render("profile",{res:result});
+    }
+    )
+           
+       }
+       })
 })
 app.get('/services' ,(req,res) => {
     res.sendFile("./Project/services.html",{root : __dirname})
@@ -140,7 +157,7 @@ app.post("/endinscription",(req,res) =>{
                 //     if (err) {throw err};
                 //     if (result.length >0){
                 //       db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
-                //       db.query("al")
+                //       db.query("DELETE FROM ProfessorWaitingLists WHERE enroliment_id = ?",[result[0].waitinglist_id])
                 //     }
                 // })
                 res.sendFile("./Project/endinscription.html",{root : __dirname})
@@ -174,39 +191,10 @@ if(req.body.submit === "save inscription prof"){
         }
     }
         )
-//     db.query("select * from Groupes where course_id = ? and num_students < 20 ;",[course],function(err,result){
-//         let grps_result = result
-//         if (grps_result.length >0){
-//           db.query("Update Groupes set num_students = ? where group_id = ?",[result[0].num_students+1,result[0].group_id],function(err){
-//             if (err) {throw err};
-//             db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
-//             db.query("Update Users set status = ? where user_id = ?",["student",id])
-//             res.sendFile("./Project/endinscription.html",{root : __dirname})
-//           })
-//         }
-//         else {
-//            db.query("insert into Groupes (num_students,course_id) values (?,?)",[1,course],function(err,result){
-//             db.query("select * from Groupes where course_id = ? and num_students < 20;",[course],function(err,result){
-//                 let grps_result = result;
-//                 db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
-//                 db.query("Update Users set status = ? where user_id = ?",["student",id])
-//                 db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
-//                 ,function(err,result){
-//                     if (err) {throw err};
-//                     if (result.length >0){
-//                       db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
-//                       db.query("al")
-//                     }
-//                 })
-//                 res.sendFile("./Project/endinscription.html",{root : __dirname})
-//             })
-//            })
-//         }
-//     })
 }
 }
 )
-app.listen(2225,() => (console.log("http://127.0.0.1:2225")))
+app.listen(2229,() => (console.log("http://127.0.0.1:2225")))
 
 
 
