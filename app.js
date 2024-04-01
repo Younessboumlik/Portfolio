@@ -148,7 +148,7 @@ app.post("/endinscription",(req,res) =>{
            })
         }
     })
-}
+} 
 if(req.body.submit === "save inscription prof"){
     var service = req.body.service ;
     var course = req.body.course;
