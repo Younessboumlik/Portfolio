@@ -6,14 +6,14 @@ let user = undefined;
 let id = undefined ;
 query_result = undefined
 // function Query(){
-db = a.createConnection({host :"sql11.freesqldatabase.com" ,  user: "sql11692837" , password:"ESZ2YTvzKy", port:"3306"})
-db.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
-db.query("USE sql11692837" , function(err){
-    if (err) throw err;
-})
+// db = a.createConnection({host :"sql11.freesqldatabase.com" ,  user: "sql11692837" , password:"ESZ2YTvzKy", port:"3306"})
+// db.connect(function(err) {
+//     if (err) throw err;
+//     console.log("Connected!");
+// });
+// db.query("USE sql11692837" , function(err){
+//     if (err) throw err;
+// })
 const app = exp();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(exp.static(__dirname + '/public'));
