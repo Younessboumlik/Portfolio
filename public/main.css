@@ -22,7 +22,7 @@ nav{
     align-items: center;
     background-color: antiquewhite;
 }
-.menu ul{
+.menu > ul{
     display: flex;
     gap: 40px;
 }
@@ -44,6 +44,32 @@ nav{
 
 }
 
+.choice{
+    cursor: pointer;
+}
+
+
+.subchoices{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+margin:0px;
+
+   } 
+   
+   .subchoices > li{
+       display: none;
+       padding: 15px;
+       background-color:rgb(255, 234, 206);
+       box-shadow: 2px 2px 3px black;
+   }
+
+.choice:hover  + .subchoices > li {
+    display: block;
+}
+.subchoices:hover{
+    display: block;
+}
 
 /* main */
 
@@ -248,3 +274,4 @@ margin-top: 10px;
     font-size: 15px;
     font-family: monospace;
 }
+
