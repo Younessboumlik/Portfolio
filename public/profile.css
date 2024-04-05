@@ -4,15 +4,17 @@
     border-radius: 20px;
 }
 #img{
-    height:300px;
-    width: 300px;
-    background-color: rgb(155, 155, 155);
+    height:240px;
+    width: 240px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 10px;
     position: absolute;
     top: 15%;
     left: 10%;
-    border-radius: 70px;
+    border-radius: 150px;
     transition: transform 1s ease-out;
-    box-shadow: 1px 1px 15px rgb(0, 0, 0);
+    
 }
 #img:hover{
     transform: scale(105%,105%);
@@ -31,4 +33,26 @@
     margin-left: 480px;
 
 
+}
+#alldata{
+    display: flex;
+    gap: 5%;
+    margin-top: 10%;
+    
+}
+.divstddata{
+    box-shadow: 0px 5px 5px rgb(135, 135, 133);
+}
+#personaluserdata{
+    border-right: solid;
+    padding-right: 3%;
+
+}
+
+#stddata{
+    width: 220%;
+
+}
+#file{
+    margin-left: 400px;
 }

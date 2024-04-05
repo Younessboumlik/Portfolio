@@ -8,54 +8,79 @@
 </head>
 <body>
 <div id = "cover"></div>
-<div id = "img"></div>
-<h1 id = "first_name"><%= res[0].first_name%></h1>
-<h1 id = "last_name"><%= res[0].last_name%></h1>
-<h1 id = "email"><%= res[0].email%></h1>
-<h1 id = "status"><%= res[0].status%></h1>
+<img  id = "img" src = "data:image/png;base64,<%= (res[0].photo).toString('base64') %>">
+<input type="file" name = "file" id = "file">
+<div id = "alldata">
+<div id = "personaluserdata">
+<h1 id = "first_name: ">  <%= res[0].first_name%></h1>
+<h1 id = "last_name: ">last name : <%= res[0].last_name%></h1>
+<h1 id = "email: ">email : <%= res[0].email%></h1>
+<h1 id = "status: ">status : <%= res[0].status%></h1>
+</div>
+<div id = "stddata">
+<h1>enrollments</h1>
 <%if (res[0].status == "student"){%>
 <% for(let i = 0;i<res.length;i++){%>
     
-    <div>
-        <h1>
+    <div class = "divstddata">
+        <h3>
           numero months : <%= res[i].num_months%>
           
-        </h1>
-        <h1>
+        </h3>
+        <h3>
             course = <%= res[i].label%>
-        </h1>
-        <h1>
+        </h3>
+        <h3>
             service = <%= res[i].label_serv%>
-        </h1>
-        <h1>
+        </h3>
+        <h3>
             num Groupe = <%= res[i].group_id%>
-        </h1>
+        </h3>
 
     </div>
 <%}%>
 <%}%>
-<%if (res[0].status == "professor"){%>
-    <div>
-        <h1>
-          numero months : <%= res[i].num_months%>
-          
-        </h1>
-        <h1>
-            course = <%= res[i].label%>
-        </h1>
-        <h1>
-            service = <%= res[i].label_serv%>
-        </h1>
-        <h1>
-            num Groupe = <%= res[i].group_id%>
-        </h1>
-        <h1>
-            enrollment date = <%= res[i].%>
-        </h1>
+</div>
 
-    </div>
-<%}%>
+</div>
+<script>
+    let a = document.getElementById("img");
+    let b = document.getElementById("file");
+   
+    b.onchange = function(){
+    //     console.log(b.files[0].path)
+    //     a.src = URL.createObjectURL(b.files[0]);
+    //     photodata = {photo:b.files[0].path}
+    //     fetch('/photourl', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(photodata)
+    // })
+    const file = b.files[0];
+            const reader = new FileReader();
 
+            reader.onload = function (event) {
+                const dataUrl = event.target.result; // Base64-encoded image data URL
+                a.src = dataUrl;
+                console.log(dataUrl)
 
+                // Send the data URL to the server
+                const photodata = { photo: dataUrl };
+                fetch('/photourl', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(photodata)
+                });
+            };
+
+            reader.readAsDataURL(file); // Read the file as a data URL
+        };
+     
+
+    </script>
 </body>
 </html>

@@ -1,10 +1,13 @@
 let a = require('mysql')
 let exp = require("express")
 const bodyParser = require('body-parser');
+exp.json({ limit: '10mb' })
+const fs = require('fs');
 let email = undefined;
 let user = undefined;
 let id = undefined ;
 query_result = undefined
+const defaultimage = fs.readFileSync('public/images/defualt.png');
 // function Query(){
 db = a.createConnection({host :"sql11.freesqldatabase.com" ,  user: "sql11692837" , password:"ESZ2YTvzKy", port:"3306"})
 db.connect(function(err) {
@@ -35,7 +38,7 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
         if (err) throw err;
         query_result = result
         if (query_result.length === 0){
-            db.query(`insert into Users (email,password,first_name,last_name) values (?, ?, ?, ?)`, [req.body.email, req.body.password, req.body.first_name, req.body.last_name],
+            db.query(`insert into Users (email,password,first_name,last_name,photo) values (?, ?, ?, ?,BINARY(?))`, [req.body.email, req.body.password, req.body.first_name, req.body.last_name,defaultimage],
             function(err){
                 db.query("select user_id from Users where email = ?;",[email],function(err,result){
                     console.log(result)
@@ -152,14 +155,14 @@ app.post("/endinscription",(req,res) =>{
                 let grps_result = result;
                 db.query("insert into StudentEnrollments (num_months,user_id,group_id) values (?,?,?)",[nbrmois,id,grps_result[0].group_id])
                 db.query("Update Users set status = ? where user_id = ?",["student",id])
-                // db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
-                // ,function(err,result){
-                //     if (err) {throw err};
-                //     if (result.length >0){
-                //       db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
-                //       db.query("DELETE FROM ProfessorWaitingLists WHERE enroliment_id = ?",[result[0].waitinglist_id])
-                //     }
-                // })
+                db.query("select enroliment_id,waitinglist_id from ProfessorWaitingLists where course_id = ? orderby wait_date ",[course]
+                ,function(err,result){
+                    if (err) {throw err};
+                    if (result.length >0){
+                      db.query("UPDATE ProfessorEnrollments set group_id = ? where enroliment_id = ?",[grps_result[0].group_id,result[0].enroliment_id])
+                      db.query("DELETE FROM ProfessorWaitingLists WHERE enroliment_id = ?",[result[0].waitinglist_id])
+                    }
+                })
                 res.sendFile("./Project/endinscription.html",{root : __dirname})
             })
            })
@@ -194,7 +197,19 @@ if(req.body.submit === "save inscription prof"){
 }
 }
 )
-app.listen(2229,() => (console.log("http://127.0.0.1:2225")))
+app.post('/photourl',(req,res) =>{
+    // var photo_data = fs.readFileSync(req.body.photo);
+    // db.query("Update Users set photo = BINARY(?) where user_id = ?",[photo_data,id],function(err,result){
+    //     console.log(result)
+    // })
+    const dataUrl = req.body.photo;
+        const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
+        const imageBuffer = Buffer.from(base64Data, 'base64');
+        db.query("Update Users set photo = ? where user_id = ?",[imageBuffer,id],function(err,result){
+                console.log(result)
+            })
+})
+app.listen(1111,() => (console.log("http://127.0.0.1:2225")))
 
 
 
