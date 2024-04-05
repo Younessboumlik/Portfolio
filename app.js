@@ -1,23 +1,25 @@
 let a = require('mysql')
 let exp = require("express")
 const bodyParser = require('body-parser');
-exp.json({ limit: '10mb' })
+
 const fs = require('fs');
 let email = undefined;
 let user = undefined;
 let id = undefined ;
 query_result = undefined
 const defaultimage = fs.readFileSync('public/images/defualt.png');
-// function Query(){
-// db = a.createConnection({host :"sql11.freesqldatabase.com" ,  user: "sql11692837" , password:"ESZ2YTvzKy", port:"3306"})
-// db.connect(function(err) {
-//     if (err) throw err;
-//     console.log("Connected!");
-// });
-// db.query("USE sql11692837" , function(err){
-//     if (err) throw err;
-// })
+
+db = a.createConnection({host :"sql11.freesqldatabase.com" ,  user: "sql11692837" , password:"ESZ2YTvzKy", port:"3306"})
+db.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
+db.query("USE sql11692837" , function(err){
+    if (err) throw err;
+})
 const app = exp();
+app.use(exp.json({ limit: "200mb" }));
+app.use(exp.urlencoded({ extended: true, limit: "200mb" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(exp.static(__dirname + '/public'));
 app.use(exp.static('public'));
@@ -209,7 +211,7 @@ app.post('/photourl',(req,res) =>{
                 console.log(result)
             })
 })
-app.listen(1111,() => (console.log("http://127.0.0.1:2225")))
+app.listen(1110,() => (console.log("http://127.0.0.1:2225")))
 
 
 
