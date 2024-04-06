@@ -3,8 +3,19 @@
     padding: 0;
 }
 
+:root{
+    --back-color: #F2FFF4;
+    --border-color: #429F64;
+    --primary:#75d496;
+    --secondary:#91e2ada2;
+    --text:#101311;
+    --active:#1AF30F;
+    --third:#cdf9afcb;
+    --texthovered:#CAFFA6;
+}
+
 body{
-    background-color:aliceblue;
+    background-color:var(--back-color);
 }
 
 ul{
@@ -20,7 +31,8 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: var(--secondary);
+    border-bottom: 1px var(--border-color) solid;
 }
 .menu > ul{
     display: flex;
@@ -32,11 +44,11 @@ nav{
     width:130px;
     border-radius: 15px;
     font-size: 15px;
-    background-color:rgb(118, 232, 194);
+    background-color:var(--active);
 }
 
 .buttons button:hover{
-    background-color:rgb(190, 255, 233);
+    background-color:var(--secondary);
 }
 
 .buttons button:active{
@@ -60,14 +72,14 @@ margin:0px;
    .subchoices > li{
        display: none;
        padding: 15px;
-       background-color:rgb(255, 234, 206);
-       box-shadow: 2px 2px 3px black;
+       background-color:var(--secondary);
+       box-shadow: 2px 2px 3px var(--border-color);
    }
 
 .choice:hover  + .subchoices > li {
     display: block;
 }
-.subchoices:hover{
+.subchoices > li:hover , .subchoices:hover{
     display: block;
 }
 
@@ -75,7 +87,7 @@ margin:0px;
 
 .discription{
     height: 200px;
-    background-color: rgb(226, 251, 252);
+    background-color: var(--third);
     margin: 30px 0px 30px 0px;
     padding:50px;
     font-size: 50px;
@@ -105,7 +117,7 @@ margin:0px;
 
 .register:hover{
     background-image: url(images/background3.jpg);
-    color:rgb(255, 255, 255);
+    color:var(--texthovered);
 }
 
 main button{
@@ -115,9 +127,8 @@ main button{
     text-shadow: 1px 0 10px rgb(73, 73, 73);
     background-size:cover;
     background-position: center;
-    color:rgb(0, 0, 0);
-    border-color: #9fd1ff;
-    border: solid 4px #9fd1ff;
+    color:var(--text);
+    border: solid 4px var(--border-color);
     border-radius: 10px;
     transition: 0.5s;
 }
@@ -134,7 +145,7 @@ main button:hover{
 
 .courses:hover{
     background-image: url(images/background1.jpg);
-    color:rgb(255, 158, 158);
+    color:var(--texthovered);
 
 }
 
@@ -146,7 +157,7 @@ main button:hover{
 }
 .platforms:hover{
     background-image: url(images/background2.jpg);
-    color:#ffde3a;
+    color:var(--texthovered);
     font-size: 75px;
 }
 
@@ -161,8 +172,8 @@ main button:hover{
     margin: 20px auto 20px auto;
     text-align: center;
     justify-content: space-evenly;
-    background-color: brown;
-    color:white;
+    background-color: var(--third);
+    color:var(--text);
     padding: 10px;
 }
 .stats,.com{
@@ -174,7 +185,7 @@ main button:hover{
 }
 /* section of commitments */
 .span{
-    color:brown;
+    color:var(--border-color);
 }
 
 
@@ -197,7 +208,7 @@ main button:hover{
     margin: 20px;
 }
 .commit{
-    background-color: beige;
+    background-color: var(thirs);
     padding-bottom: 5px;
     padding-top: 1px;
 }
@@ -215,12 +226,12 @@ main button:hover{
     height: 300px;
     margin: 20px 0px 20px 0px;
     width:20%;
-    border: black solid 2px;
+    border: var(--border-color) solid 2px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:#ffe771;
+    background-color:var(--third);
     transition: 1s;
 }
 .firstoffer:hover,.secondoffer:hover{
@@ -237,11 +248,11 @@ background-color:blanchedalmond;
 /* footer */
 
 footer{
-    background: rgb(67, 67, 67);
+    background: var(--secondary);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    color: white;
+    color: var(--text);
     height:100px;
     margin-top: 20px;
     padding: 40px;
