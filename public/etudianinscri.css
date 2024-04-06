@@ -1,14 +1,55 @@
 
+*{
+    margin:0px;
+    padding:0px;
+}
+
+:root{
+    --back-color: #F2FFF4;
+    --border-color: #429F64;
+    --primary:#75d496;
+    --secondary:#91e2ada2;
+    --text:#101311;
+    --active:#1AF30F;
+    --third:#cdf9afcb;
+    --texthovered:#CAFFA6;
+    --clicked:#d6ffe9;
+}
+
+:root.dark-mode{
+    --back-color: #03750149;
+    --border-color: #576300;
+    --primary:#75b066;
+    --secondary:#1C803A;
+    --text:#ffffff;
+    --active:#3DD487;
+    --third:#4b6f5e;
+    --texthovered:#a1f0ae;
+    --clicked:#92ad9e;
+}
+body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+img{
+    width:250px;
+    height: 600px;
+
+}
 #form{
-    background-color: rgb(142, 213, 213);
+    background-color: var(--back-color);
     text-align: center;
     width: 50%;
     padding-top: 2%;
     padding-bottom: 5%;
-    margin-left: 25%;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    
     border-radius: 20px;
-    box-shadow: 5px 5px 20px rgb(185, 189, 189);
+    box-shadow: 5px 5px 20px var(--border-color);
 
 }
 div{
@@ -21,7 +62,7 @@ div{
 #cours,#service,#textnbrmois{
     height: 40px;
     border-radius: 7px;
-    border-color: rgb(41, 233, 207);
+    border-color: var(--border-color);
     border-width: 3px;
 }
 

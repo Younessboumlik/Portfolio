@@ -25,4 +25,6 @@ if (scrollPosition > offersElement.offsetTop-500) {
 }
 }
 
+
+
 window.addEventListener('scroll', onScroll);

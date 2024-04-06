@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etudiant</title>
-    <link rel="stylesheet" href="/etudianinscri.css">
+    <title>Professor Registration</title>
+    <link rel="stylesheet" href="/profinscription.css">
 </head>
 <body>
+    <img src="/images/prof-01.png" alt="">
     <form id = "form" method="post" action="/endinscription">
-    <h1>inscription info</h1>
+    <h1>Professor Registration</h1>
     <div id = "divser">
-        <label id = servicelabel>chooce your service</label>
+        <label id = "servicelabel">Choose your service:</label>
         <select id = "service" name = "service">
-            <option value="1">soutient</option>
-            <option value="2">langue</option>
-            <option value="3">soft_skilles</option>
-            <option value="4">computer science</option>
+            <option value="1">Academic Support</option>
+            <option value="2">Language Courses</option>
+            <option value="3">Soft Skills Training</option>
+            <option value="4">Computer Science</option>
         </select>
     </div>
     <div id = "divcourse">
-        <label id = "courslabel">chooce your course</label>
+        <label id = "courslabel">Select your course:</label>
         <select id = "cours" name = "course">
         </select>
     </div>
     <div id = "nbrmois">
-        <label id = "nbrmoislabel">how much mounth do you want to study</label>
+        <label id = "nbrmoislabel">How many months do you want to study?</label>
         <input type="text" id = "textnbrmois" name = "nbrmois">
     </div>
-    <input type="submit" value="save inscription prof" id = "submit" name = "submit">
+    <input type="submit" value="save inscription student" id = "submit" name = "submit">
     </form>
     <script src = "/etudianrinscri.js"></script>
 </body>

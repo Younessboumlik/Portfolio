@@ -12,6 +12,20 @@
     --active:#1AF30F;
     --third:#cdf9afcb;
     --texthovered:#CAFFA6;
+    --clicked:#d6ffe9;
+}
+
+:root.dark-mode{
+    --back-color: #03750149;
+    --border-color: #576300;
+    --primary:#75b066;
+    --secondary:#1C803A;
+    --text:#ffffff;
+    --active:#3DD487;
+    --third:#4b6f5e;
+    --texthovered:#a1f0ae;
+    --clicked:#92ad9e;
+
 }
 
 body{
@@ -27,12 +41,18 @@ a{
 }
 
 nav{
+    color:var(--text);
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--secondary);
     border-bottom: 1px var(--border-color) solid;
+}
+
+nav a:link,
+nav a:visited {
+    color: var(--text);
 }
 .menu > ul{
     display: flex;
@@ -48,11 +68,12 @@ nav{
 }
 
 .buttons button:hover{
-    background-color:var(--secondary);
+    background-color:var(--text);
+    color:var(--active)
 }
 
 .buttons button:active{
-    background-color:rgb(254, 255, 255);
+    background-color:var(--clicked);
 
 }
 
@@ -92,6 +113,7 @@ margin:0px;
     padding:50px;
     font-size: 50px;
     text-align: center;
+    color:var(--text)
 }
 .title{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -235,7 +257,8 @@ main button:hover{
     transition: 1s;
 }
 .firstoffer:hover,.secondoffer:hover{
-background-color:blanchedalmond;
+    background-color:var(--texthovered);
+    transform: scale(110%);
 }
 .theoffers img{
     height: 200px;

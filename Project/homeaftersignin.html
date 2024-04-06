@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/homeaftersignin.css">
 </head>
 <body>
+
+
     <header>
         <nav>
             <div class="logo">
@@ -15,19 +17,27 @@
             <div class="menu">
                 <ul>
                     <li><a href="/inscription">Inscription</a></li>
-                    <li><a href="">blabla</a></li>
-                    <li><a href="">About</a></li>
+                    <li><a href="">Become A Teacher</a></li>
+                    <li><p class = choice>About</p>
+                        <ul class="subchoices">
+                            <li><button href="">Courses</button></li>
+                            <li><button href="">Platforms</button></li>
+                        </ul>
+                    </li>
                     <li><a href="">Contact Us</a></li>
                 </ul>
             </div>
+            
             <div class="buttons">
-                <button>
-                    <a href="/profile">profile</a>
+                <button onclick = "window.location.href = '/profile' "> 
+                    profile
+                </button>
+                <button onclick="darkmode()">
+                    Dark Mode
                 </button>
             </div>
         </nav>
     </header>
-
 
     <main>
         <div class="discription">
@@ -72,10 +82,46 @@
         </div>
 
     </div>
+
+    <div class="offers">
+        <p class="com"><b>Our <span class = "span">Offers</span></b></p>
+        <div class="theoffers">
+            <div class="firstoffer">
+                <p> <b>Normal Offer</b></p>
+                <img src="/images/offers.png" alt="books image">
+                <p class = "barred"><b><s>50$ / course</s></b></p>
+                <p><b>30$ / course</b></p>
+
+            </div>
+            <div class="secondoffer">
+                <p><b>Special Offer</b></p>
+                <img src="/images/offer2.png" alt="books image">
+                <p class = "barred"><b><s>100$ / 2 courses</s></b></p>
+                <p><b>50$ / 2 courses</b></p>
+
+            </div>
+        </div>
+
+    </div>
     </main>
 
     <footer>
-
+        <div class="boumlik">
+            <p><b>Youness Boumlik</b></p>
+            <p class = "subtitle"><i>IT & DATA ENGINEER STUDENT AT ENSA KHOURIBGA</i></p>
+            <p class = "subtitle"><i>SOFTWARE ENGINEERING STUDENT AT ALX</i></p>
+            <a href = "https://github.com/Younessboumlik" class = "icons"><img src="/images/github.png" alt="github icon" class = "icons"></a>
+            <a href = "https://www.linkedin.com/in/youness-boumlik-a13935190/" class = "icons"><img src="/images/linkedin.png" alt="linkedin icon" class = "icons"></a>
+        </div>
+        <div class="boulidam">
+            <p><b>Abdellah Boulidam</b></p>
+            <p class = "subtitle"><i>IT & DATA ENGINEER STUDENT AT ENSA KHOURIBGA</i></p>
+            <p class = "subtitle"><i>SOFTWARE ENGINEERING STUDENT AT ALX</i></p>
+            <a href = "https://github.com/saskiutchiha" class = "icons"><img src="/images/github.png" alt="github icon" class = "icons"></a>
+            <a href = "https://www.linkedin.com/in/abdellah-boulidam-728711240/" class = "icons"><img src="/images/linkedin.png" alt="linkedin icon" class = "icons"></a>
+        </div>
     </footer>
+    <script src="/dark-mode.js"></script>
+
 </body>
 </html>
