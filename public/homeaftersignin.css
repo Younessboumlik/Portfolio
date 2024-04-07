@@ -3,8 +3,33 @@
     padding: 0;
 }
 
+:root{
+    --back-color: #F2FFF4;
+    --border-color: #429F64;
+    --primary:#75d496;
+    --secondary:#91e2ada2;
+    --text:#101311;
+    --active:#1AF30F;
+    --third:#cdf9afcb;
+    --texthovered:#CAFFA6;
+    --clicked:#d6ffe9;
+}
+
+:root.dark-mode{
+    --back-color: #03750149;
+    --border-color: #576300;
+    --primary:#75b066;
+    --secondary:#1C803A;
+    --text:#ffffff;
+    --active:#3DD487;
+    --third:#4b6f5e;
+    --texthovered:#a1f0ae;
+    --clicked:#92ad9e;
+
+}
+
 body{
-    background-color:aliceblue;
+    background-color:var(--back-color);
 }
 
 ul{
@@ -16,13 +41,20 @@ a{
 }
 
 nav{
+    color:var(--text);
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: var(--secondary);
+    border-bottom: 1px var(--border-color) solid;
 }
-.menu ul{
+
+nav a:link,
+nav a:visited {
+    color: var(--text);
+}
+.menu > ul{
     display: flex;
     gap: 40px;
 }
@@ -32,28 +64,56 @@ nav{
     width:130px;
     border-radius: 15px;
     font-size: 15px;
-    background-color:rgb(118, 232, 194);
+    background-color:var(--active);
 }
 
 .buttons button:hover{
-    background-color:rgb(190, 255, 233);
+    background-color:var(--text);
+    color:var(--active)
 }
 
 .buttons button:active{
-    background-color:rgb(254, 255, 255);
+    background-color:var(--clicked);
 
 }
 
+.choice{
+    cursor: pointer;
+}
+
+
+.subchoices{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+margin:0px;
+
+   } 
+   
+   .subchoices > li{
+       display: none;
+       padding: 15px;
+       background-color:var(--secondary);
+       box-shadow: 2px 2px 3px var(--border-color);
+   }
+
+.choice:hover  + .subchoices > li {
+    display: block;
+}
+.subchoices > li:hover , .subchoices:hover{
+    display: block;
+}
 
 /* main */
 
 .discription{
     height: 200px;
-    background-color: rgb(226, 251, 252);
+    background-color: var(--third);
     margin: 30px 0px 30px 0px;
     padding:50px;
     font-size: 50px;
     text-align: center;
+    color:var(--text)
 }
 .title{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -79,7 +139,7 @@ nav{
 
 .register:hover{
     background-image: url(images/background3.jpg);
-    color:rgb(255, 255, 255);
+    color:var(--texthovered);
 }
 
 main button{
@@ -89,10 +149,10 @@ main button{
     text-shadow: 1px 0 10px rgb(73, 73, 73);
     background-size:cover;
     background-position: center;
-    color:rgb(0, 0, 0);
-    border-color: #9fd1ff;
-    border: solid 4px #9fd1ff;
+    color:var(--text);
+    border: solid 4px var(--border-color);
     border-radius: 10px;
+    transition: 0.5s;
 }
 main button:hover{
     font-size: 80px;
@@ -107,7 +167,7 @@ main button:hover{
 
 .courses:hover{
     background-image: url(images/background1.jpg);
-    color:rgb(255, 158, 158);
+    color:var(--texthovered);
 
 }
 
@@ -119,7 +179,7 @@ main button:hover{
 }
 .platforms:hover{
     background-image: url(images/background2.jpg);
-    color:#ffde3a;
+    color:var(--texthovered);
     font-size: 75px;
 }
 
@@ -134,8 +194,8 @@ main button:hover{
     margin: 20px auto 20px auto;
     text-align: center;
     justify-content: space-evenly;
-    background-color: brown;
-    color:white;
+    background-color: var(--third);
+    color:var(--text);
     padding: 10px;
 }
 .stats,.com{
@@ -147,7 +207,7 @@ main button:hover{
 }
 /* section of commitments */
 .span{
-    color:brown;
+    color:var(--border-color);
 }
 
 
@@ -170,14 +230,82 @@ main button:hover{
     margin: 20px;
 }
 .commit{
-    background-color: beige;
+    background-color: var(thirs);
     padding-bottom: 5px;
     padding-top: 1px;
 }
 
+.theoffers{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    margin: 10px 0px 10px 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+.firstoffer,.secondoffer{
+    padding: 15px;
+    height: 300px;
+    margin: 20px 0px 20px 0px;
+    width:20%;
+    border: var(--border-color) solid 2px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:var(--third);
+    transition: 1s;
+}
+.firstoffer:hover,.secondoffer:hover{
+    background-color:var(--texthovered);
+    transform: scale(110%);
+}
+.theoffers img{
+    height: 200px;
+    width:200px
+}
+.barred{
+    color: red;
+    font-size: 25px;
+}
 /* footer */
 
 footer{
-    background: antiquewhite;
-    /* height:60px; */
+    background: var(--secondary);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: var(--text);
+    height:100px;
+    margin-top: 20px;
+    padding: 40px;
+    font-size: 20px;
 }
+
+footer img{
+    height:100px;
+    width:100px;
+}
+
+.boumlik,.boulidam{
+    align-items: center;
+    text-align: center;
+}
+
+.info, .commitments, .theoffers{
+    opacity: 0;
+    transition:2s;
+}
+
+.icons{
+background-color: transparent;
+border:transparent;
+width:60px;
+height: 60px;
+margin-top: 10px;
+}
+.subtitle{
+    font-size: 15px;
+    font-family: monospace;
+}
+
