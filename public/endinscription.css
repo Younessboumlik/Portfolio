@@ -1,24 +1,67 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+:root{
+    --back-color: #F2FFF4;
+    --border-color: #429F64;
+    --primary:#75d496;
+    --secondary:#91e2ada2;
+    --text:#101311;
+    --active:#1AF30F;
+    --third:#cdf9afcb;
+    --texthovered:#CAFFA6;
+    --clicked:#d6ffe9;
+}
+
+:root.dark-mode{
+    --back-color: #03750149;
+    --border-color: #576300;
+    --primary:#75b066;
+    --secondary:#1C803A;
+    --text:#ffffff;
+    --active:#3DD487;
+    --third:#4b6f5e;
+    --texthovered:#a1f0ae;
+    --clicked:#92ad9e;
+}
+body{
+    background-color: var(--back-color);
+}
 div{
-   
     padding-top: 10%;
     padding-bottom: 10%;
-    background-color: aqua;
+    background-color: var(--third);
     width: 50%;
     height: 50%;
     margin: auto;
     margin-top: 7%;
     border-radius: 20px;
-    box-shadow: 3px 3px 20px rgb(182, 184, 179);
+    box-shadow: 3px 3px 20px var(--border-color);
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
 }
 button{
-    margin-left: 15%;
     height: 60px;
     width: 120px;
     border: none;
     border-radius: 20px;
-    background-color: rgb(170, 255, 0);
+    background-color: var(--active);
     box-shadow: 3px 3px 20px rgb(182, 184, 179);
     transition: transform 2s ease-out;
+    margin-top: 5%;
+
+
+}
+.succes{
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: var(--text);
 
 }
 #home{
@@ -29,6 +72,10 @@ button:hover{
     transition-duration: 2s;
 }
 button:active{
-    background-color: azure;
-    box-shadow: 0px 0px 20px rgb(251, 255, 245);
+    background-color: var(--clicked);
+    box-shadow: 0px 0px 20px var(--border-color);
+}
+
+#profile{
+    margin-left: 5%;
 }
