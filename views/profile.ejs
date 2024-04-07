@@ -9,10 +9,11 @@
 <body>
 <div id = "cover"></div>
 <img  id = "img" src = "data:image/png;base64,<%= (res[0].photo).toString('base64') %>">
+<label for = "file" id = "labelfile"><img src = "/images/camera.png" id = "camera"></label>
 <input type="file" name = "file" id = "file">
 <div id = "alldata">
 <div id = "personaluserdata">
-<h1 id = "first_name: ">  <%= res[0].first_name%></h1>
+<h1 id = "first_name: "> first name : <%= res[0].first_name%></h1>
 <h1 id = "last_name: ">last name : <%= res[0].last_name%></h1>
 <h1 id = "email: ">email : <%= res[0].email%></h1>
 <h1 id = "status: ">status : <%= res[0].status%></h1>
@@ -40,6 +41,27 @@
     </div>
 <%}%>
 <%}%>
+<%if (res[0].status == "professor"){%>
+    <% for(let i = 0;i<res.length;i++){%>
+        
+        <div class = "divstddata">
+            <h3>
+              numero months : <%= res[i].num_months%>
+              
+            </h3>
+            <h3>
+                course = <%= res[i].label%>
+            </h3>
+            <h3>
+                service = <%= res[i].label_serv%>
+            </h3>
+            <h3>
+                num Groupe = <%= res[i].group_id%>
+            </h3>
+    
+        </div>
+    <%}%>
+    <%}%>
 </div>
 
 </div>

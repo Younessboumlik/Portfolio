@@ -27,7 +27,7 @@ app.set("view engine","ejs");
 // parse application/json
 app.use(bodyParser.json());
 app.get('/' ,(req,res) => {
-    res.sendFile("./Project/main.html",{root : __dirname})
+    res.render("main",{checksignin:false})
 })
 app.get('/login' ,(req,res) => {
     res.render("index",{checknotlogin:false});
@@ -77,7 +77,7 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
  })
 app.get('/inscription', (req,res) => {
     if (email === undefined){
-      res.sendFile('./views/gologin.html',{root : __dirname})
+        res.render("main",{checksignin:true})
     } 
     else {
         res.sendFile("./Project/inscription1.html",{root : __dirname})
@@ -211,7 +211,7 @@ app.post('/photourl',(req,res) =>{
                 console.log(result)
             })
 })
-app.listen(1110,() => (console.log("http://127.0.0.1:2225")))
+app.listen(1113,() => (console.log("http://127.0.0.1:2225")))
 
 
 

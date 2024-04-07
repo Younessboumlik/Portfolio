@@ -274,4 +274,11 @@ margin-top: 10px;
     font-size: 15px;
     font-family: monospace;
 }
+#errorsignin{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(255, 195, 207);
+    text-align: center;
+    width: 60%;margin-left: 20%;
+    color: red;
+}
 
