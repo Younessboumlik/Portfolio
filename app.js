@@ -7,6 +7,7 @@ let email = undefined;
 let user = undefined;
 let id = undefined ;
 query_result = undefined
+let dark_mode = false;
 const defaultimage = fs.readFileSync('public/images/defualt.png');
 
 db = a.createConnection({host :"sql11.freesqldatabase.com" ,  user: "sql11692837" , password:"ESZ2YTvzKy", port:"3306"})
@@ -27,7 +28,15 @@ app.set("view engine","ejs");
 // parse application/json
 app.use(bodyParser.json());
 app.get('/' ,(req,res) => {
-    res.render("main",{checksignin:false})
+    
+    db.query("SELECT count(DISTINCT user_id) as nbr_users FROM Users",function(err,result){
+        db.query("SELECT count(DISTINCT user_id) as nbr_profs FROM ProfessorEnrollments",function(err,result2){
+            db.query("SELECT count(DISTINCT course_id) as nbr_courses FROM Courses ",function(err,result3){
+                    res.render("main",{checksignin:false,students:result[0].nbr_users,profs:result2[0].nbr_profs,courses:result3[0].nbr_courses})
+            })
+        })
+
+    })
 })
 app.get('/login' ,(req,res) => {
     res.render("index",{checknotlogin:false});
@@ -77,11 +86,19 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
  })
 app.get('/inscription', (req,res) => {
     if (email === undefined){
-        res.render("main",{checksignin:true})
+        db.query("SELECT count(DISTINCT user_id) as nbr_users FROM Users",function(err,result){
+            db.query("SELECT count(DISTINCT user_id) as nbr_profs FROM ProfessorEnrollments",function(err,result2){
+                db.query("SELECT count(DISTINCT course_id) as nbr_courses FROM Courses ",function(err,result3){
+                        res.render("main",{checksignin:true,students:result[0].nbr_users,profs:result2[0].nbr_profs,courses:result3[0].nbr_courses})
+                })
+            })
+    
+        })
     } 
     else {
         res.sendFile("./Project/inscription1.html",{root : __dirname})
     }
+
 })
 app.get('/inscription/etudiant' ,(req,res) => {
     res.sendFile("./Project/etudianrinscri.html",{root : __dirname})
@@ -211,7 +228,7 @@ app.post('/photourl',(req,res) =>{
                 console.log(result)
             })
 })
-app.listen(1110,() => (console.log("http://127.0.0.1:2225")))
+app.listen(1110,() => (console.log("http://127.0.0.1:1110")))
 
 
 

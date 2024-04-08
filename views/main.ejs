@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
                 <button onclick = "window.location.href = '/login' "> 
                     Log In
                 </button>
-                <button onclick="darkmode()">
+                <button id = "dark-mode" onclick="darkmode()">
                     Dark Mode
                 </button>
             </div>
@@ -41,7 +41,7 @@
 
     <main>
         <%if (checksignin){%>
-            <h1 id = "errorsignin">you didnt sign in yet</h1>
+            <h1 id = "errorsignin">You Did Not Sign In Yet</h1>
         <%}%>
         
         <div class="discription">
@@ -69,9 +69,9 @@
 
         <div class="info">
 
-            <div><p>+100</p><p>Learners</p></div>
-            <div><p>+60</p><p>Teachers</p></div>
-            <div><p>+30</p><p>Courses</p></div>
+            <div><p><%= students %></p><p>Learners</p></div>
+            <div><p><%= profs %></p><p>Teachers</p></div>
+            <div><p><%= courses %></p><p>Courses</p></div>
         </div>
 
     <div class="commit">

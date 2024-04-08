@@ -2,15 +2,70 @@ body{
     background-color: rgb(181, 181, 181);
 }
 
-div{
-    background-color: rgb(136, 205, 205);
+:root{
+    --back-color: #F2FFF4;
+    --border-color: #429F64;
+    --primary:#75d496;
+    --secondary:#91e2ada2;
+    --text:#101311;
+    --active:#1AF30F;
+    --third:#cdf9afcb;
+    --texthovered:#CAFFA6;
+    --clicked:#d6ffe9;
+}
+
+:root.dark-mode{
+    --back-color: #03750149;
+    --border-color: #576300;
+    --primary:#75b066;
+    --secondary:#1C803A;
+    --text:#ffffff;
+    --active:#3DD487;
+    --third:#4b6f5e;
+    --texthovered:#a1f0ae;
+    --clicked:#92ad9e;
+}
+
+.img1{
+    width:250px;
+    height: 600px;
+    /* float: left; */
+    position: relative;
+    bottom: 70px; 
+    /* margin-bottom: 500px; */
+
+}
+
+.img2{
+    width:350px;
+    height: 550px;
+    /* float: left; */
+    bottom: 5%;
+    position: relative;
+
+
+} 
+
+
+body{
+    background-color: var(--back-color);
+
+}
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.content{
+    float: left;
+    background-color: var(--third);
     text-align: center;
     width: 40%;
     margin: auto;
     margin-top: 10%;
     padding-top: 5%;
     padding-bottom: 5%;
-    box-shadow: 5px 5px 20px rgb(136, 162, 162);
+    box-shadow: 5px 5px 20px var(--border-color);
     border-radius: 10px;
   
 }
@@ -29,19 +84,19 @@ h1{
     width: 100px;
     border: none;
     border-radius: 10px;
-     background-color: rgb(27, 85, 94);
-     box-shadow: 5px 5px 20px rgb(136, 162, 162);
-     color: azure;
+    background-color: var(--active);
+    box-shadow: 5px 5px 50px var(--border-color);
+    color: var(--text);
 }
 #etudiant:active{
-    background-color: aliceblue;
+    background-color: var(--clicked);
 }
 #professeur:active{
-    background-color: aliceblue;
+    background-color: var(--clicked);
 }
 .but:hover{
-    background-color: rgb(192, 255, 255);
-    color: darkcyan;
+    background-color: var(--texthovered);
+    color: var(--text);
 }
 h2{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -2,9 +2,34 @@
     margin:0px;
     padding: 0px;
 }
+
+:root{
+    --back-color: #F2FFF4;
+    --border-color: #429F64;
+    --primary:#75d496;
+    --secondary:#91e2ada2;
+    --text:#101311;
+    --active:#1AF30F;
+    --third:#cdf9afcb;
+    --texthovered:#CAFFA6;
+    --clicked:#d6ffe9;
+}
+
+:root.dark-mode{
+    --back-color: #03750149;
+    --border-color: #576300;
+    --primary:#75b066;
+    --secondary:#1C803A;
+    --text:#ffffff;
+    --active:#3DD487;
+    --third:#4b6f5e;
+    --texthovered:#a1f0ae;
+    --clicked:#92ad9e;
+
+}
 body{
     height:400px;
-    background-color:aliceblue;
+    background-color:var(--back-color);
 }
 
 .create {
@@ -15,7 +40,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     padding-top: 20px;
-    border:solid #9fd1ff 5px;
+    border:solid var(--border-color) 5px;
     text-align: center;
     /* background-color:rgb(213, 235, 255); */
 }
@@ -34,10 +59,10 @@ body{
 #email, #password{
     height:35px;
     width: 220px;
-    border: #9fd1ff solid 1.4px;
+    border: var(--border-color) solid 1.4px;
     border-radius: 4px;
     padding-left: 10px;
-    background-color:aliceblue;
+    background-color:var(--third);
 }
 .login h1{
     margin-top: 35px;
@@ -48,7 +73,7 @@ body{
     position: relative;
     top:10px;
     left: 10px;
-    background-color: aliceblue;
+    background-color: var(--third);
     text-align: center;
 }
 
@@ -70,11 +95,11 @@ body{
 }
 .createaccount a{
     text-decoration: none;
-    color:brown;
+    color:var(--border-color);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 #submitlogin{
-    background-color: #9fd1ff;
+    background-color: var(--primary);
     border: none;
     width: 70px;
     height: 20px;
@@ -85,12 +110,12 @@ body{
 #submitlogin:hover
 {
     transform: scale(120%,120%);
-    background-color: #46a6ff;
-    box-shadow: 0px 0px 20px #46a6ff;
+    background-color: var(--active);
+    box-shadow: 0px 0px 20px var(--active);
 }
 #submitlogin:active{
-    background-color:white;
-    box-shadow: 0px 0px 20px white;
+    background-color:var(--clicked);
+    box-shadow: 0px 0px 20px var(--clicked);
 }
 #errorcreataccount{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
