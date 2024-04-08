@@ -4,8 +4,11 @@ const bodyParser = require('body-parser');
 
 const fs = require('fs');
 let email = undefined;
-let user = undefined;
+let first_name = undefined 
+let last_name = undefined
+let password = undefined
 let id = undefined ;
+let codeverif;
 query_result = undefined
 const defaultimage = fs.readFileSync('public/images/defualt.png');
 
@@ -33,14 +36,12 @@ app.get('/login' ,(req,res) => {
     res.render("index",{checknotlogin:false});
 })
 
-app.post('/home/me' ,(req,res) => {console.log(req.body.email)
-    email = req.body.email;    
-    if (req.body.submit === "creatacc"){
-    db.query(`select * from Users where email = ?;`,[email], function(err, result) {
-        if (err) throw err;
-        query_result = result
-        if (query_result.length === 0){
-            db.query(`insert into Users (email,password,first_name,last_name,photo) values (?, ?, ?, ?,BINARY(?))`, [req.body.email, req.body.password, req.body.first_name, req.body.last_name,defaultimage],
+app.post('/home/me' ,(req,res) => {
+       
+    if (req.body.submit === "verify"){
+    
+        if (req.body.codeinput == codeverif){
+            db.query(`insert into Users (email,password,first_name,last_name,photo) values (?, ?, ?, ?,BINARY(?))`, [email,password,first_name,last_name,defaultimage],
             function(err){
                 db.query("select user_id from Users where email = ?;",[email],function(err,result){
                     console.log(result)
@@ -53,8 +54,10 @@ app.post('/home/me' ,(req,res) => {console.log(req.body.email)
             
          }
        else{
-           res.render("createaccount",{checkcreataccount:true})
-         }})
+        codeverif = Math.floor(Math.random()*1000000)
+            console.log(codeverif);
+        res.render('verificationemail',{firstname:first_name,lastname:last_name,email:email,checkcode:true,code:codeverif} )
+         }
     
     }
     if (req.body.submit === "Log in"){
@@ -200,18 +203,36 @@ if(req.body.submit === "save inscription prof"){
 }
 )
 app.post('/photourl',(req,res) =>{
-    // var photo_data = fs.readFileSync(req.body.photo);
-    // db.query("Update Users set photo = BINARY(?) where user_id = ?",[photo_data,id],function(err,result){
-    //     console.log(result)
-    // })
+
     const dataUrl = req.body.photo;
         const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
         const imageBuffer = Buffer.from(base64Data, 'base64');
         db.query("Update Users set photo = ? where user_id = ?",[imageBuffer,id],function(err,result){
                 console.log(result)
+              
+
             })
 })
-app.listen(1110,() => (console.log("http://127.0.0.1:2225")))
+app.post("/verificationemail",(req,res) =>{
+    db.query(`select * from Users where email = ?;`,[email], function(err, result) {
+        if (err) throw err;
+        query_result = result
+
+        if (query_result.length === 0){
+            email = req.body.email;
+            password = req.body.password
+            first_name = req.body.first_name
+            last_name = req.body.last_name
+            codeverif = Math.floor(Math.random()*1000000)
+            console.log(codeverif);
+    res.render('verificationemail',{firstname:req.body.first_name,lastname:req.body.last_name,email:req.body.email,checkcode:false,code:codeverif} )
+        }
+        else {
+            res.render("createaccount",{checkcreataccount:true})
+        }
+})
+})
+app.listen(9990,() => (console.log("http://127.0.0.1:2225")))
 
 
 
