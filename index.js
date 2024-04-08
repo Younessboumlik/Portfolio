@@ -250,7 +250,7 @@ app.post("/verificationemail",(req,res) =>{
         }
 })
 })
-app.listen(9990,() => (console.log("http://127.0.0.1:2225")))
+app.listen(10000,() => (console.log("http://127.0.0.1:10000")))
 
 
 
