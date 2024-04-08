@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/verficationemail.css">
+    <title>OTP Verification</title>
+</head>
+<body>
+    <form class="container" action="/home/me" method="post">
+        <h1>Enter Verification Code</h1>
+        <input type="text" name ="codeinput" placeholder="Enter verification code">
+        <input type="submit" name = "submit" value = "verify" id = "submit">
+    </form>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let firstname = '<%= firstname%>'; 
+        let lastname = '<%= lastname%>';
+        let email = '<%= email%>';
+        checkcode = `<%= checkcode %>`;
+        code = '<%= code%>'
+        console.log(email)
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "boulidamabdellah8@gmail.com",
+                Password: "2D1FD71013A1879345965F0A0A31F96B386B",
+                To: `${email}`,
+                From: "boulidamabdellah8@gmail.com",
+                Subject: "verification code",
+                Body: `hi ${firstname} ${lastname} this is you code verification ${code}`,
+            }).then(function (message) {
+            if(checkcode == 'false'){
+                Swal.fire({
+           
+            icon: "success",
+            title: "the verification has been sent tou your email with successe",
+            showConfirmButton: true,
+            
+             })}
+             else{
+                Swal.fire({
+        icon: "error",
+         title: "Oops...",
+        text: "Something went wrong!",
+        footer: 'we resent the verification to tou email',
+          showConfirmButton: true,
+          });
+             };
+            })
+            ;
+        }
+       
+        sendEmail();
+        
+    </script>
+</body>
+</html>
