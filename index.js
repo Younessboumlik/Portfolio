@@ -250,10 +250,6 @@ app.post("/verificationemail",(req,res) =>{
         }
 })
 })
-// app.listen(10000,() => (console.log("http://127.0.0.1:10000")))
-
-
-
 
 
 const port = process.env.PORT || 3000;
