@@ -70,6 +70,7 @@ app.post('/home/me' ,(req,res) => {
     
     }
     if (req.body.submit === "Log in"){
+        email = req.body.email;
         db.query(`select * from Users where email = ? and password = ?`,[req.body.email,req.body.password],function(err,result){
         console.log(result);
         if (err) throw err;
