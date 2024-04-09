@@ -62,7 +62,7 @@ body{
     border: var(--border-color) solid 1.4px;
     border-radius: 4px;
     padding-left: 10px;
-    background-color:var(--third);
+    background-color:var(--texthovered);
 }
 .login h1{
     margin-top: 35px;
@@ -73,7 +73,7 @@ body{
     position: relative;
     top:10px;
     left: 10px;
-    background-color: var(--third);
+    background-color: var(--texthovered);
     text-align: center;
 }
 

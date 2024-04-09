@@ -1,7 +1,7 @@
 let a = require('mysql')
 let exp = require("express")
 const bodyParser = require('body-parser');
-
+// const  uploadProgress = require('express-upload-progress');
 const fs = require('fs');
 let email = undefined;
 let first_name = undefined 
@@ -251,6 +251,8 @@ app.post("/verificationemail",(req,res) =>{
 })
 })
 
+
+// app.use(uploadProgress)
 
 const port = process.env.PORT || 3000;
 app.listen(port);

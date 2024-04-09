@@ -1,4 +1,4 @@
-const button = document.getElementById(dark-mode);
+const button = document.getElementById("dark-mode");
 
 
 function isLocalStorageAvailable() {
@@ -22,5 +22,6 @@ function darkmode() {
   document.documentElement.classList.toggle('dark-mode');
   const isDarkMode = document.documentElement.classList.contains('dark-mode');
   localStorage.setItem('darkMode', isDarkMode);
-  button.textContent = "Light Mode";
+  (button.innerText == "Dark Mode") ? (button.innerText = "Light Mode") : (button.innerText = "Dark Mode");
+  console.log( (button.innerText == "Dark Mode"))
 }

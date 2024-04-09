@@ -58,8 +58,18 @@ nav a:visited {
     display: flex;
     gap: 40px;
 }
+.login{
+    margin: 0px 20px 0px 20px;
+    width:1px;
+    height:1px;
+    background-color: transparent;
+    border: transparent;
+}
 
-.buttons button{
+.loginicon{
+    color: var(--text);
+}
+#dark-mode{
     height: 35px;
     width:130px;
     border-radius: 15px;
@@ -67,12 +77,12 @@ nav a:visited {
     background-color:var(--active);
 }
 
-.buttons button:hover{
+#dark-mode:hover{
     background-color:var(--text);
     color:var(--active)
 }
 
-.buttons button:active{
+#dark-mode:active{
     background-color:var(--clicked);
 
 }
@@ -315,4 +325,105 @@ margin-top: 10px;
     width: 60%;margin-left: 20%;
     color: red;
 }
+.menulabel, #menu{
 
+    display: none;
+}
+
+@media (max-width:1318px){
+.platforms:hover,.courses:hover,.register:hover{
+    font-size: 60px;
+}
+}
+
+
+@media (max-width:1209px){
+.theoffers{
+    font-size: 20px;
+}
+
+}
+@media (max-width:1090px){
+.top button{
+    font-size: 50px;
+}
+.top button:hover{
+    font-size: 50px;
+}
+.barred{
+    font-size: 18px;
+}
+.firstoffer,.secondoffer{
+    height:260px;
+}
+}
+
+@media (max-width:872px){
+    .menulabel{
+        display: block;
+    }
+    .menu,.buttons{
+    border-left: 2px solid var(--border-color);
+    padding: 50px;
+    display: none;
+    top:48px;
+    right:0px;
+    position: absolute;
+    height:100%;
+    width:200px;
+    text-align: center;
+    background-color: var(--third);
+}
+.buttons{
+    top:400px;
+    display: none;
+}
+.menu ul{
+    display: flex;
+    flex-direction: column;
+}
+#menu:checked ~ .menu{
+    display: block;
+    transition: 2s;
+}
+
+#menu:checked ~ .buttons{
+        padding-top: 0px;
+        display: flex;
+        flex-direction: column;
+        gap:40px;
+        /* justify-content: center; */
+        align-items: center;
+}
+.top button,.top button:hover{
+        font-size: 40px;
+}
+}
+
+@media (max-width:806px) {
+    .theoffers{
+        font-size: 15px;
+    }
+    .barred{
+        font-size: 12px;
+    }
+
+    .firstoffer,.secondoffer{
+        height:240px;
+    }
+    footer{
+    height:130px;
+
+    }
+}
+@media (max-width:770px) {
+
+
+
+}
+
+
+
+/* @media (max-width:1090px){
+
+} */
