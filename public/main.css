@@ -1,6 +1,8 @@
 *{
     margin : 0;
     padding: 0;
+    transition: 0.2s;
+
 }
 
 :root{
@@ -290,6 +292,7 @@ footer{
     margin-top: 20px;
     padding: 40px;
     font-size: 20px;
+    gap:40px
 }
 
 footer img{
@@ -310,9 +313,12 @@ footer img{
 .icons{
 background-color: transparent;
 border:transparent;
-width:60px;
-height: 60px;
+width:50px;
+height: 50px;
 margin-top: 10px;
+}
+.link{
+    margin-left: 30px;
 }
 .subtitle{
     font-size: 15px;
@@ -384,7 +390,6 @@ margin-top: 10px;
 }
 #menu:checked ~ .menu{
     display: block;
-    transition: 2s;
 }
 
 #menu:checked ~ .buttons{
@@ -416,14 +421,170 @@ margin-top: 10px;
 
     }
 }
-@media (max-width:770px) {
+@media (max-width:788px) {
+.theoffers img{
+    height: 160px;
+    width:160px
+}
+.firstoffer,.secondoffer{
+    height:200px;
+}
+.top{
+    padding: 20px;
+    grid-template-columns: 40% 40%;
+    /* row-gap: 10%; */
+}
+.icons{
+    width:40px;
+    height: 40px;
+}
+footer{
+    height:120px;
 
+    }
+}
+
+@media (max-width:761px) {
+
+.top button,.top button:hover{
+        font-size: 50px;
+}
+main button{
+    height: 150px;
+}
+.title{
+    font-size: 75px;
+}
+.discription{
+    font-size: 45px;
+    height: 160px;
+}
+.subtitle{
+    font-size: 12px;
+
+}
+footer{
+    height:100px;
+
+    }
+}
+@media (max-width:608px) {
+    .theoffers{
+        font-size: 13px;
+    }
+    .barred{
+        font-size: 10px;
+    }
+    .theoffers img{
+        height: 140px;
+        width:140px
+    }
+    .firstoffer,.secondoffer{
+        height:170px;
+    }
+
+    .title{
+        font-size: 60px;
+    }
+    .discription{
+        font-size: 30px;
+        height: 120px;
+    }
+    .top button,.top button:hover{
+        font-size: 40px;
+    }
+    main button{
+        height: 130px;
+    }
 
 
 }
 
 
+@media (max-width:525px) {
 
-/* @media (max-width:1090px){
+    
+    .firstoffer, .secondoffer{
+        width: 100px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    
 
-} */
+    .title{
+        font-size: 50px;
+    }
+    .discription{
+        font-size: 20px;
+        height: 80px;
+    }
+
+
+    .theoffers{
+        font-size: 11px;
+    }
+    .barred{
+        font-size: 8px;
+    }
+    .theoffers img{
+        height: 120px;
+        width:120px
+    }
+    .firstoffer,.secondoffer{
+        height:150px;
+    }
+
+}
+
+@media (max-width:462px) {
+
+    .top button,.top button:hover{
+        font-size: 30px;
+    }
+    .info{
+        font-size: 20px;
+    }
+    .subtitle{
+        font-size: 10px;
+    
+    }
+    footer{
+        height:100px;
+    
+        }
+    .boumlik, .boulidam{
+        font-size: 15px;
+    }
+    
+    .discription{
+        padding:30px
+    }
+    .title{
+        font-size: 45px;
+    }
+    .discription{
+        font-size: 15px;
+        height: 60px;
+    }
+}
+
+
+@media (max-width:366px) {
+    .top{
+        padding: 15px;
+        grid-template-columns: 45% 45%;
+        /* row-gap: 10%; */
+    }
+
+    .title{
+        font-size: 35px;
+    }
+    .discription{
+        font-size: 15px;
+        height: 50px;
+    }
+
+    .boumlik, .boulidam{
+        font-size: 10px;
+    }
+}
