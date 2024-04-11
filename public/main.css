@@ -69,8 +69,6 @@ nav{
     align-items: center;
     background-color: var(--secondary);
     border-bottom: 1px var(--border-color) solid;
-    position: sticky;
-    top:0;
 }
 
 nav a:link,
@@ -338,6 +336,12 @@ width:50px;
 height: 50px;
 margin-top: 10px;
 }
+.iconspan{
+    font-size: 15px;
+}
+.iconspan:hover{
+    color: var(--border-color);
+}
 .link{
     margin-left: 30px;
 }
@@ -366,22 +370,25 @@ margin-top: 10px;
 
 @media (max-width:1209px){
 .theoffers{
-    font-size: 20px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.firstoffer,.secondoffer{
+    text-align: center;
+    width:300px;
+
 }
 
 }
 @media (max-width:1090px){
+    
 .top button{
     font-size: 50px;
 }
 .top button:hover{
     font-size: 50px;
-}
-.barred{
-    font-size: 18px;
-}
-.firstoffer,.secondoffer{
-    height:260px;
 }
 }
 
@@ -418,7 +425,6 @@ margin-top: 10px;
         display: flex;
         flex-direction: column;
         gap:40px;
-        /* justify-content: center; */
         align-items: center;
 }
 .top button,.top button:hover{
@@ -427,33 +433,15 @@ margin-top: 10px;
 }
 
 @media (max-width:806px) {
-    .theoffers{
-        font-size: 15px;
-    }
-    .barred{
-        font-size: 12px;
-    }
-
-    .firstoffer,.secondoffer{
-        height:240px;
-    }
     footer{
     height:130px;
 
     }
 }
 @media (max-width:788px) {
-.theoffers img{
-    height: 160px;
-    width:160px
-}
-.firstoffer,.secondoffer{
-    height:200px;
-}
 .top{
     padding: 20px;
     grid-template-columns: 40% 40%;
-    /* row-gap: 10%; */
 }
 .icons{
     width:40px;
@@ -466,6 +454,10 @@ footer{
 }
 
 @media (max-width:761px) {
+
+.footer{
+    height:160px;
+}
 
 .top button,.top button:hover{
         font-size: 50px;
@@ -480,29 +472,15 @@ main button{
     font-size: 45px;
     height: 160px;
 }
-.subtitle{
-    font-size: 12px;
 
-}
-footer{
-    height:100px;
 
+    .firstoffer,.secondoffer{
+        text-align: center;
+        width:250px;
+    
     }
 }
 @media (max-width:608px) {
-    .theoffers{
-        font-size: 13px;
-    }
-    .barred{
-        font-size: 10px;
-    }
-    .theoffers img{
-        height: 140px;
-        width:140px
-    }
-    .firstoffer,.secondoffer{
-        height:170px;
-    }
 
     .title{
         font-size: 60px;
@@ -511,25 +489,22 @@ footer{
         font-size: 30px;
         height: 120px;
     }
-    /* .top button,.top button:hover{
-        font-size: 40px;
-    } */
     main button{
         height: 130px;
     }
 
+    footer{
+        flex-direction: column;
+        height: 240px;
+    }
+    .menu,.buttons{
+        width:150px;    
+    }
 
 }
 
 
-@media (max-width:525px) {
-
-    
-    /* .firstoffer, .secondoffer{
-        width: 100px;
-        flex-grow: 0;
-        flex-shrink: 0;
-    } */
+@media (max-width:528px) {
     
 
     .title{
@@ -541,40 +516,39 @@ footer{
     }
 
 
-    /* .theoffers{
-        font-size: 11px;
-    } */
+    .theoffers{
+        font-size: 30px;
+    }
     .barred{
-        font-size: 8px;
+        font-size: 15px;
     }
-    /* .theoffers img{
-        height: 120px;
-        width:120px
+    .theoffers img{
+        height: 180px;
+        width: 180px
     }
+
     .firstoffer,.secondoffer{
-        height:150px;
-    } */
+        text-align: center;
+        width:200px;
+    }
+
+    .top button,.top button:hover{
+        font-size: 30px;
+    }
 
 }
 
 @media (max-width:462px) {
 
-    /* .top button,.top button:hover{
-        font-size: 30px;
-    } */
+    .menu,.buttons{
+        width:120px;
+    }
     .info{
         font-size: 20px;
     }
-    .subtitle{
-        font-size: 10px;
-    
-    }
+
     footer{
-        height:100px;
-    
-        }
-    .boumlik, .boulidam{
-        font-size: 15px;
+        height: 270px;
     }
     
     .discription{
@@ -590,11 +564,10 @@ footer{
 }
 
 
-@media (max-width:366px) {
+@media (max-width:372px) {
     .top{
         padding: 15px;
         grid-template-columns: 45% 45%;
-        /* row-gap: 10%; */
     }
 
     .title{
@@ -605,7 +578,11 @@ footer{
         height: 50px;
     }
 
-    .boumlik, .boulidam{
-        font-size: 10px;
+    footer{
+        padding: 30px;
+        height:310px;
+    }
+    .menu,.buttons{
+        width:100px;
     }
 }
