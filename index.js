@@ -3,6 +3,7 @@ let exp = require("express")
 const bodyParser = require('body-parser');
 
 const fs = require('fs');
+const { error } = require('console');
 let email = undefined;
 let first_name = undefined 
 let last_name = undefined
@@ -79,6 +80,8 @@ app.post('/home/me' ,(req,res) => {
                 res.render("index",{checknotlogin:true})
             }
             else{
+                first_name = result[0].first_name;
+                last_name = result[0].last_name;
                 db.query("select user_id from Users where email = ?;",[email],function(err,result){
                    id = result[0].user_id 
             }
@@ -223,6 +226,7 @@ if(req.body.submit === "save inscription prof"){
 app.post('/photourl',(req,res) =>{
 
     const dataUrl = req.body.photo;
+        console.log(dataUrl)
         const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
         const imageBuffer = Buffer.from(base64Data, 'base64');
         db.query("Update Users set photo = ? where user_id = ?",[imageBuffer,id],function(err,result){
@@ -251,8 +255,41 @@ app.post("/verificationemail",(req,res) =>{
         }
 })
 })
+app.post("/chnangepassword", (req,res) =>{
+    db.query("select password from Users where user_id = ?",[id],function(err,result){
+        if (err) throw err;
+        if (req.body.currentpassword == result[0].password && req.body.newpassword == req.body.confirmpassword){
+          
+        }
+        else{
+            db.query("select photo from Users where user_id = ?",[id],function(err,result){
+                console.log(result);
+                res.render("changepassword",{photo:result[0].photo,passerror:true})
+            })    
+        }
+    })
+})
+app.get("/verificationcodeforchangeemail",(req,res)=>{
+    codeverif = Math.floor(Math.random()*1000000)
+    console.log(codeverif)
+    res.render("verificationforchangepassword",{firstname:first_name,email:email,lastname:last_name,code:codeverif,checkcode:false})
+})
+app.post("/changewithsucces",(req,res)=>{
+    if(codeverif == req.body.codeinput){
+        db.query("select photo from Users where user_id = ?",[id],function(err,result){
+            console.log(result);
+            res.render("changepassword",{photo:result[0].photo,passerror:false})
+        })
+      
+    }
+    else{
+        codeverif = Math.floor(Math.random()*1000000)
+            console.log(codeverif);
+        res.render('verificationforchangepassword',{firstname:first_name,lastname:last_name,email:email,checkcode:true,code:codeverif} )
+         }
+});
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4509;
 app.listen(port);
 
