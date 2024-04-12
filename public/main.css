@@ -1,6 +1,8 @@
 *{
     margin : 0;
     padding: 0;
+    transition: 0.2s;
+
 }
 
 :root{
@@ -31,6 +33,25 @@
 body{
     background-color:var(--back-color);
 }
+.logo{
+    color:var(--text)
+}
+.logo2{
+animation-name: logo2;
+animation-duration: 5s;
+animation-iteration-count: infinite;
+}
+@keyframes logo2 {
+    25%{
+        color:var(--border-color)
+    }
+    50%{
+        color: var(--primary);
+    }
+    75%{
+        color:var(--active);
+    }
+}
 
 ul{
     list-style-type: none;
@@ -58,8 +79,18 @@ nav a:visited {
     display: flex;
     gap: 40px;
 }
+.login{
+    margin: 0px 20px 0px 20px;
+    width:1px;
+    height:1px;
+    background-color: transparent;
+    border: transparent;
+}
 
-.buttons button{
+.loginicon{
+    color: var(--text);
+}
+#dark-mode{
     height: 35px;
     width:130px;
     border-radius: 15px;
@@ -67,12 +98,12 @@ nav a:visited {
     background-color:var(--active);
 }
 
-.buttons button:hover{
+#dark-mode:hover{
     background-color:var(--text);
     color:var(--active)
 }
 
-.buttons button:active{
+#dark-mode:active{
     background-color:var(--clicked);
 
 }
@@ -280,6 +311,7 @@ footer{
     margin-top: 20px;
     padding: 40px;
     font-size: 20px;
+    gap:40px
 }
 
 footer img{
@@ -300,9 +332,18 @@ footer img{
 .icons{
 background-color: transparent;
 border:transparent;
-width:60px;
-height: 60px;
+width:50px;
+height: 50px;
 margin-top: 10px;
+}
+.iconspan{
+    font-size: 15px;
+}
+.iconspan:hover{
+    color: var(--border-color);
+}
+.link{
+    margin-left: 30px;
 }
 .subtitle{
     font-size: 15px;
@@ -315,4 +356,233 @@ margin-top: 10px;
     width: 60%;margin-left: 20%;
     color: red;
 }
+.menulabel, #menu{
 
+    display: none;
+}
+
+@media (max-width:1318px){
+.platforms:hover,.courses:hover,.register:hover{
+    font-size: 60px;
+}
+}
+
+
+@media (max-width:1209px){
+.theoffers{
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.firstoffer,.secondoffer{
+    text-align: center;
+    width:300px;
+
+}
+
+}
+@media (max-width:1090px){
+    
+.top button{
+    font-size: 50px;
+}
+.top button:hover{
+    font-size: 50px;
+}
+}
+
+@media (max-width:872px){
+    .menulabel{
+        display: block;
+    }
+    .menu,.buttons{
+    border-left: 2px solid var(--border-color);
+    padding: 50px;
+    display: none;
+    top:48px;
+    right:0px;
+    position: absolute;
+    height:100%;
+    width:200px;
+    text-align: center;
+    background-color: var(--third);
+}
+.buttons{
+    top:400px;
+    display: none;
+}
+.menu ul{
+    display: flex;
+    flex-direction: column;
+}
+#menu:checked ~ .menu{
+    display: block;
+}
+
+#menu:checked ~ .buttons{
+        padding-top: 0px;
+        display: flex;
+        flex-direction: column;
+        gap:40px;
+        align-items: center;
+}
+.top button,.top button:hover{
+        font-size: 40px;
+}
+}
+
+@media (max-width:806px) {
+    footer{
+    height:130px;
+
+    }
+}
+@media (max-width:788px) {
+.top{
+    padding: 20px;
+    grid-template-columns: 40% 40%;
+}
+.icons{
+    width:40px;
+    height: 40px;
+}
+footer{
+    height:120px;
+
+    }
+}
+
+@media (max-width:761px) {
+
+.footer{
+    height:160px;
+}
+
+.top button,.top button:hover{
+        font-size: 50px;
+}
+main button{
+    height: 150px;
+}
+.title{
+    font-size: 75px;
+}
+.discription{
+    font-size: 45px;
+    height: 160px;
+}
+
+
+    .firstoffer,.secondoffer{
+        text-align: center;
+        width:250px;
+    
+    }
+}
+@media (max-width:608px) {
+
+    .title{
+        font-size: 60px;
+    }
+    .discription{
+        font-size: 30px;
+        height: 120px;
+    }
+    main button{
+        height: 130px;
+    }
+
+    footer{
+        flex-direction: column;
+        height: 240px;
+    }
+    .menu,.buttons{
+        width:150px;    
+    }
+
+}
+
+
+@media (max-width:528px) {
+    
+
+    .title{
+        font-size: 50px;
+    }
+    .discription{
+        font-size: 20px;
+        height: 80px;
+    }
+
+
+    .theoffers{
+        font-size: 30px;
+    }
+    .barred{
+        font-size: 15px;
+    }
+    .theoffers img{
+        height: 180px;
+        width: 180px
+    }
+
+    .firstoffer,.secondoffer{
+        text-align: center;
+        width:200px;
+    }
+
+    .top button,.top button:hover{
+        font-size: 30px;
+    }
+
+}
+
+@media (max-width:462px) {
+
+    .menu,.buttons{
+        width:120px;
+    }
+    .info{
+        font-size: 20px;
+    }
+
+    footer{
+        height: 270px;
+    }
+    
+    .discription{
+        padding:30px
+    }
+    .title{
+        font-size: 45px;
+    }
+    .discription{
+        font-size: 15px;
+        height: 60px;
+    }
+}
+
+
+@media (max-width:372px) {
+    .top{
+        padding: 15px;
+        grid-template-columns: 45% 45%;
+    }
+
+    .title{
+        font-size: 35px;
+    }
+    .discription{
+        font-size: 15px;
+        height: 50px;
+    }
+
+    footer{
+        padding: 30px;
+        height:310px;
+    }
+    .menu,.buttons{
+        width:100px;
+    }
+}

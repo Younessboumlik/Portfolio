@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
     <header>
         <nav>
             <div class="logo">
-                <img src="" alt="logo">
+                <p><b>Build <span class="logo2">Yourself</span></b></p>
             </div>
+
+            <input id = "menu" type="checkbox">
             <div class="menu">
                 <ul>
                     <li><a href="/inscription">Inscription</a></li>
-                    <li><a href="">Become A Teacher</a></li>
-                    <li><p class = choice>About</p>
-                        <ul class="subchoices">
-                            <li><button href="">Courses</button></li>
-                            <li><button href="">Platforms</button></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="#">Become A Teacher</a></li>
+                    <li><a href="#">About</a> </li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
             
             <div class="buttons">
-                <button onclick = "window.location.href = '/login' "> 
-                    Log In
-                </button>
+
                 <button id = "dark-mode" onclick="darkmode()">
                     Dark Mode
                 </button>
+                <button class = "login" onclick = "window.location.href = '/login' ">
+                    <span class="iconspan"> 
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </span>
+                </button>
             </div>
+            <label class="menulabel" for="menu"><i class="fa-solid fa-bars"></i></label>
+
         </nav>
     </header>
 
@@ -115,14 +117,14 @@
             <p class = "subtitle"><i>IT & DATA ENGINEER STUDENT AT ENSA KHOURIBGA</i></p>
             <p class = "subtitle"><i>SOFTWARE ENGINEERING STUDENT AT ALX</i></p>
             <a href = "https://github.com/Younessboumlik" class = "icons"><img src="/images/github.png" alt="github icon" class = "icons"></a>
-            <a href = "https://www.linkedin.com/in/youness-boumlik-a13935190/" class = "icons"><img src="/images/linkedin.png" alt="linkedin icon" class = "icons"></a>
+            <a href = "https://www.linkedin.com/in/youness-boumlik-a13935190/" class = "icons link"><img src="/images/linkedin.png" alt="linkedin icon" class = "icons"></a>
         </div>
         <div class="boulidam">
             <p><b>Abdellah Boulidam</b></p>
             <p class = "subtitle"><i>IT & DATA ENGINEER STUDENT AT ENSA KHOURIBGA</i></p>
             <p class = "subtitle"><i>SOFTWARE ENGINEERING STUDENT AT ALX</i></p>
             <a href = "https://github.com/saskiutchiha" class = "icons"><img src="/images/github.png" alt="github icon" class = "icons"></a>
-            <a href = "https://www.linkedin.com/in/abdellah-boulidam-728711240/" class = "icons"><img src="/images/linkedin.png" alt="linkedin icon" class = "icons"></a>
+            <a href = "https://www.linkedin.com/in/abdellah-boulidam-728711240/" class = "icons link"><img src="/images/linkedin.png" alt="linkedin icon" class = "icons"></a>
         </div>
     </footer>
     <script src="/main.js"></script>

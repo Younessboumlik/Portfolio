@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
     <link rel="stylesheet" href="/createaccount.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <% if (checkcreataccount){%>
-    <h1 id = "errorcreataccount">error :this email is already used</h1>
+    <% if (checkcreataccount) {%>
+        <div class = "error">
+        <span class = "iconspan"><i class="fa-solid fa-circle-exclamation"></i></span>
+        <h1 id ="errorlogin">ERROR :This email is already used</h1>
+        </div>
     <%}%>
     <div class="create">
         <h1>Create Account</h1>
@@ -39,6 +43,8 @@
             <h5>Already have an account?</h5><a href="/login"> Log in</a>
         </div>
     </div>
+    <script src="/dark-mode.js"></script>
+    
 
 </body>
 
