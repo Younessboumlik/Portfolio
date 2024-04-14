@@ -32,7 +32,13 @@ app.set("view engine","ejs");
 // parse application/json
 app.use(bodyParser.json());
 app.get('/' ,(req,res) => {
-    
+     email = undefined;
+ first_name = undefined 
+ last_name = undefined
+ password = undefined
+ id = undefined ;
+query_result = undefined
+dark_mode = false;
     db.query("SELECT count(DISTINCT user_id) as nbr_users FROM Users",function(err,result){
         db.query("SELECT count(DISTINCT user_id) as nbr_profs FROM ProfessorEnrollments",function(err,result2){
             db.query("SELECT count(DISTINCT course_id) as nbr_courses FROM Courses ",function(err,result3){
@@ -45,7 +51,9 @@ app.get('/' ,(req,res) => {
 app.get('/login' ,(req,res) => {
     res.render("index",{checknotlogin:false});
 })
-
+app.get('/home' ,(req,res) => {
+    res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+})
 app.post('/home/me' ,(req,res) => {
        
     if (req.body.submit === "verify"){
@@ -70,7 +78,7 @@ app.post('/home/me' ,(req,res) => {
          }
     
     }
-    if (req.body.submit === "Log in"){
+    else if (req.body.submit === "Log in"){
         email = req.body.email;
         db.query(`select * from Users where email = ? and password = ?`,[req.body.email,req.body.password],function(err,result){
         console.log(result);
@@ -90,6 +98,8 @@ app.post('/home/me' ,(req,res) => {
             }
     })
     }
+    
+       
  })
 app.get('/inscription', (req,res) => {
     if (email === undefined){
@@ -132,7 +142,7 @@ app.get('/profile' ,(req,res) => {
        )
         }
        else if (result[0].status == "professor"){
-        db.query(`select * from Users,ProfessorEnrollments,Groupes,Courses,Services where Users.user_id  = StudentEnrollments.user_id and 
+        db.query(`select * from Users,ProfessorEnrollments,Groupes,Courses,Services where Users.user_id  = ProfessorEnrollments.user_id and 
         Users.user_id = ? and ProfessorEnrollments.group_id = Groupes.group_id and Groupes.course_id = Courses.course_id and
         Courses.service_id = Services.service_id `,[id], function(err, result) {
           if (err) throw err;
@@ -208,7 +218,8 @@ if(req.body.submit === "save inscription prof"){
         if(result.length === 0){
             db.query("INSERT INTO ProfessorEnrollments(num_months,enrollment_date,user_id) VALUES (?,?,?) ",[nbrmois,time_enroll,id])
             db.query("SELECT max(enrollment_id) as max_enrollment_id FROM ProfessorEnrollments" ,function(err,result){
-            db.query("INSERT INTO ProfessorWaitingLists(enrollment_id,wait_date) VALUES(?,?)",[result[0].max_enrollment_id,time_enroll])                
+            db.query("INSERT INTO ProfessorWaitingLists(enrollment_id,wait_date) VALUES(?,?)",[result[0].max_enrollment_id,time_enroll]) 
+            res.sendFile("./Project/endinscription.html",{root : __dirname})               
         }
             )
         }
@@ -237,7 +248,7 @@ app.post('/photourl',(req,res) =>{
 })
 
 app.post("/verificationemail",(req,res) =>{
-    db.query(`select * from Users where email = ?;`,[email], function(err, result) {
+    db.query(`select * from Users where email = ?;`,[req.body.email], function(err, result) {
         if (err) throw err;
         query_result = result
 
@@ -294,6 +305,6 @@ app.post("/changewithsucces",(req,res)=>{
 
 // app.use(uploadProgress)
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 6663;
 app.listen(port);
 

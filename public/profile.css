@@ -1,11 +1,11 @@
 body{
-    margin: 0%;
+    margin: 0px;
     background-color:mintcream;
 }
 #cover{
     height: 200px;
     background-color: gray;
-    border-radius: 20px;
+    width: 100%;
 }
 #img{
     height:240px;
@@ -13,9 +13,6 @@ body{
     border-style: solid;
     border-color: rgb(255, 255, 255);
     border-width: 10px;
-    position: absolute;
-    top: 15%;
-    left: 10%;
     border-radius: 150px;
     transition: transform 1s ease-out;
    
@@ -43,7 +40,7 @@ body{
 #alldata{
     display: flex;
     gap: 5%;
-    margin-top: 10%;
+    margin-top: 7%;
     padding: 5%;
     
 }
@@ -60,34 +57,218 @@ body{
 }
 
 #stddata{
-    width: 220%;
+    width: 100%;
 
 }
 #file{
-   
     display: none;
 }
-#labelfile{
-    margin-left: 400px;
-    position: absolute;
-    top: 40%;
-    left: 0%;
-    
 
-}
 #camera{
     height: 30px;
     width: 30px;
     
 }
-#reload{
+#labelfile{
+    margin-top: 0%;
+}
+#imginput{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+}
+a{
+text-decoration: none;
+color: black;
+}
+
+.optionsbar a {
+    height: 30px;
+    width: 30px; 
+}
+.optionsbar img{
     height: 30px;
     width: 30px;
+  
+}
+.optionsbar{
+   margin-left: 82%;
+   width: 15%;
+   height: 60px;
+   display: flex;
+   gap: 2%; 
+   gap: 12%;
+   margin-top: 10px;
+   position: relative;
+  
+}
+.dropdownmenu li img{
+ margin-left: 10px;
+ margin-top: 3px;
     
 }
-#reloadlink{
-    margin-left: 97%;
-    margin-top: 100px;
+
+.dropdownmenu{
+    position: absolute;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    right: 6%;
+    padding: 3rem;
+    padding-top: 0%;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    border-radius: 10px;
+    background: rgba(83, 80, 80, 0.1);
+    backdrop-filter: blur(10px);
+   
+
+}
+.dropdownmenu li{
+    margin-top: 10%;
+    margin-left: 30%;
+}
+#list1{
+    margin-top: 0%;
+    margin-left: 0%;
+}
+.dropdownmenu.open{
+    display: block;
+}
+.dropdownmenu li img{
+    height: 30px;
+    width: 30px;
+   
+}
+
+#imgnavbar{
+    height: 30px;
+    width: 30px;
+}
+#buttonnavbar{
+    margin-left:90%;
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+#divtheme{
     
-  
+    background-color: rgba(28, 34, 34,0.3);
+    position: absolute;
+    display: none;
+    /* right: 5%; */
+    list-style-type: none;
+    margin-bottom: 0%;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    padding-right: 10px;
+    padding-left: 10px;
+    right: 40%;
+    
+    
+}
+#divtheme li button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+}
+#imgtheme:hover + #divtheme{
+ display: block;
+}
+#divtheme:hover{
+ display: block;
+}
+
+#divthemedropdownmenu{
+    
+    background-color: rgba(28, 34, 34,0.3);
+    position: absolute;
+    display: none;
+    right: 0%;
+    list-style-type: none;
+    top: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    padding: 10px;
+    
+    
+}
+#divthemedropdownmenu li button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+}
+#divthemedropdownmenu li{
+    margin-left: 0%;
+}
+
+#themeres:hover + #divthemedropdownmenu {
+   display: block;
+}
+#listtheme :hover+ #listlogout{
+    margin-top: 30%;
+}
+#divthemedropdownmenu:hover{
+    display: block;
+}
+/*
+define classes foe dark mode
+*/
+.darkbackground{
+    background-color: rgb(59, 58, 58);
+   }
+   .bordergreen{
+       border-color:rgb(21, 137, 131) ;
+   }
+   .whitehyppertext{
+       color: aliceblue;
+   }
+
+@media (max-width:992px){
+    
+    #buttonnavbar{
+        margin-top: 10px;
+        display: block;
+    }
+    .optionsbar{
+        display: none;
+    }
+     #alldata{
+        display: flex;
+        flex-direction: column;
+   
+    }
+    
+    #personaluserdata{
+        border-style:none;
+        border-width: 0px;
+    }
+    .divstddata{
+        width: 100%;
+    }
+    #img{
+        height: 140px;
+        width: 140px;
+        border-radius: 250px;
+       margin: auto;
+        
+    }
+    #personaluserdata{
+        font-size: smaller;
+    }
+    
+
+}
+@media (max-width:320px){
+    img{
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+    }
+    
 }

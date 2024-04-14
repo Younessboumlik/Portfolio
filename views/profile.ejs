@@ -8,10 +8,40 @@
 </head>
 <body>
 <div id = "cover"></div>
+<div id = "imginput">
 <img  id = "img" src = "data:image/png;base64,<%= (res[0].photo).toString('base64') %>">
-<a href = "/verificationcodeforchangeemail" id = "reloadlink"><img src = "/images/reload.png" id = "reload"></a>
 <label for = "file" id = "labelfile"><img src = "/images/camera.png" id = "camera"></label>
 <input type="file" name = "file" id = "file">
+</div>
+<button id = "buttonnavbar"><img src = "/images/navigation-bar.png" id = "imgnavbar"></button>
+<div class = "optionsbar">
+<a href = "/verificationcodeforchangeemail" id = "reloadlink"><img src = "/images/reload.png" id = "reload"></a>
+<a href = "/home" id = "homelink"><img src = "/images/home.png" id = "homeimg"></a>
+<img src = "/images/theme.png" id = "imgtheme">
+<ul id = "divtheme">
+    <li><button id = "darkmodebutton">ORIGINAL</button><li>
+    <li><button id = "originmodebutton">DARK</button><li>
+</ul>
+<a href = "/" id = "logoutlink"><img src = "/images/logout.png" id = "logoutimg"></a>
+
+</div>
+<ul class = "dropdownmenu">
+    <li id = 'list1'>
+        <a href = "/verificationcodeforchangeemail" id = "reloadlink">CHANGE PASWWORD<img src = "/images/reload.png" id = "reloadres"></a></li>
+    <li> 
+        <a href = "/home" id = "homelink">HOME<img src = "/images/home.png" id = "homeres"></a></li>
+    
+    <li id = "listtheme"><label for = "theme">THEME</label>
+        <img src = "/images/theme.png" id = "themeres">
+        <ul id = "divthemedropdownmenu">
+            <li><button id = "darkres">ORIGINAL</button><li>
+            <li><button id = "originres">DARK</button><li>
+    </ul>
+        </li>
+    <li id = "listlogout">
+    <a href = "/" id = "logoutlink">LOG OUT<img src = "/images/logout.png" id = "logoutres"></a></li>
+    </ul>
+
 <div id = "alldata">
 <div id = "personaluserdata">
 <h1 id = "first_name: "> first name : <%= res[0].first_name%></h1>
@@ -51,6 +81,10 @@
               
             </h3>
             <h3>
+                enrollment date: <%= res[i].enrollment_date%>
+                
+              </h3>
+            <h3>
                 course = <%= res[i].label%>
             </h3>
             <h3>
@@ -66,21 +100,12 @@
 </div>
 
 </div>
+
 <script>
     let a = document.getElementById("img");
     let b = document.getElementById("file");
    
     b.onchange = function(){
-    //     console.log(b.files[0].path)
-    //     a.src = URL.createObjectURL(b.files[0]);
-    //     photodata = {photo:b.files[0].path}
-    //     fetch('/photourl', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(photodata)
-    // })
     const file = b.files[0];
             const reader = new FileReader();
 
@@ -102,8 +127,118 @@
 
             reader.readAsDataURL(file); // Read the file as a data URL
         };
-     
+        baropend = false ;
+     const buttonnavbar = document.getElementById("buttonnavbar");
+     const dropdownmenu = document.getElementsByClassName("dropdownmenu")[0];
+     const imgnavbar =  document.getElementById("imgnavbar");
+     buttonnavbar.onclick = function(){
+        if(baropend == false){
+            dropdownmenu.classList.toggle("open");
+            
+            imgnavbar.src = "/images/close.png";
+            baropend = true
+        }
+        else{
+            dropdownmenu.classList.remove("open");
+            imgnavbar.src = "/images/navigation-bar.png";
+            baropend = false
+        }
+        
+     }
+     function handleResize() {
+    if (window.innerWidth >= 992) {
+        dropdownmenu.classList.remove("open");
+        imgnavbar.src = "/images/navigation-bar.png";
+        baropend = false;
+    }
+}
 
+
+   window.addEventListener("resize", handleResize)
+
+    const  body = document.querySelector("body");
+    const h1 = document.querySelectorAll("h1")
+    const h3 = document.querySelectorAll("h3")
+    const darkmodebutton = document.getElementById("darkmodebutton");
+    const originmodebutton = document.getElementById("originmodebutton")
+    const reload = document.getElementById("reload")
+    const home = document.getElementById("homeimg")
+    const theme = document.getElementById("imgtheme")
+    const logout = document.getElementById("logoutimg")
+
+    darkmodebutton.onclick = function(){
+        console.log("ssssssssssss")
+        for(let elem of h1){
+            
+            elem.classList.add("whitehyppertext");
+        }
+        for(let elem of h3){
+            elem.classList.add("whitehyppertext");
+        }
+        body.classList.add("darkbackground");
+        reload.src = "/images/greeenreload.png";
+        home.src = "/images/greenhome.png";
+        theme.src = "/images/greentheme.png";
+        logout.src = "/images/greenlogout.png";
+
+    }
+    originmodebutton.onclick = function(){
+        console.log("ssssssssssss")
+        for(let elem of h1){
+            
+            elem.classList.remove("whitehyppertext");
+        }
+        for(let elem of h3){
+            elem.classList.remove("whitehyppertext");
+        }
+        body.classList.remove("darkbackground");
+        reload.src = "/images/reload.png";
+        home.src = "/images/home.png";
+        theme.src = "/images/theme.png";
+        logout.src = "/images/logout.png";
+
+    }
+    const darkres = document.getElementById("darkres");
+    const originres = document.getElementById("originres")
+    const reloadres = document.getElementById("reloadres")
+    const homeres = document.getElementById("homeres")
+    const themeres = document.getElementById("themeres")
+    const logoutres = document.getElementById("logoutres")
+    darkres.onclick = function(){
+        console.log("ssssssssssss")
+        for(let elem of h1){
+            
+            elem.classList.add("whitehyppertext");
+        }
+        for(let elem of h3){
+            elem.classList.add("whitehyppertext");
+        }
+        body.classList.add("darkbackground");
+        reloadres.src = "/images/greeenreload.png";
+        homeres.src = "/images/greenhome.png";
+        themeres.src = "/images/greentheme.png";
+        logoutres.src = "/images/greenlogout.png";
+
+    }
+    originres.onclick = function(){
+        console.log("ssssssssssss")
+        for(let elem of h1){
+            
+            elem.classList.remove("whitehyppertext");
+        }
+        for(let elem of h3){
+            elem.classList.remove("whitehyppertext");
+        }
+        body.classList.remove("darkbackground");
+        reloadres.src = "/images/reload.png";
+        homeres.src = "/images/home.png";
+        themeres.src = "/images/theme.png";
+        logoutres.src = "/images/logout.png";
+
+    }
+
+
+       
     </script>
 </body>
 </html>
