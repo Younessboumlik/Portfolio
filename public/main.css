@@ -598,3 +598,7 @@ main button{
         width:100px;
     }
 }
+#submit{
+    height: 100px;
+    width: 100px;
+}
