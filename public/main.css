@@ -299,6 +299,18 @@ main button:hover{
     color: red;
     font-size: 25px;
 }
+
+/* about us section */
+.aboutus{
+    background-color: var(--third);
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    padding: 30px;
+    font-size: 30px;
+}
+
+/* contact us section */
+
 /* footer */
 
 footer{

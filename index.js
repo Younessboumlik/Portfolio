@@ -65,7 +65,14 @@ app.post('/home/me' ,(req,res) => {
                     console.log(result)
                    id = result[0].user_id 
                    console.log(id)
-                   res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+                   db.query("SELECT count(DISTINCT user_id) as nbr_users FROM Users",function(err,result){
+                    db.query("SELECT count(DISTINCT user_id) as nbr_profs FROM ProfessorEnrollments",function(err,result2){
+                        db.query("SELECT count(DISTINCT course_id) as nbr_courses FROM Courses ",function(err,result3){
+                                res.render("homeaftersignin",{checksignin:false,students:result[0].nbr_users,profs:result2[0].nbr_profs,courses:result3[0].nbr_courses})
+                        })
+                    })
+            
+                })
                 })
                
             })
@@ -94,7 +101,15 @@ app.post('/home/me' ,(req,res) => {
                    id = result[0].user_id 
             }
                 )
-                res.sendFile("./Project/homeaftersignin.html",{root : __dirname})
+
+                db.query("SELECT count(DISTINCT user_id) as nbr_users FROM Users",function(err,result){
+                    db.query("SELECT count(DISTINCT user_id) as nbr_profs FROM ProfessorEnrollments",function(err,result2){
+                        db.query("SELECT count(DISTINCT course_id) as nbr_courses FROM Courses ",function(err,result3){
+                                res.render("homeaftersignin",{checksignin:false,students:result[0].nbr_users,profs:result2[0].nbr_profs,courses:result3[0].nbr_courses})
+                        })
+                    })
+            
+                })
             }
     })
     }
@@ -311,11 +326,8 @@ app.post("/changewithsucces",(req,res)=>{
          }
 });
 
-
-
-
 // app.use(uploadProgress)
 
-const port = process.env.PORT || 9997;
-app.listen(port);
 
+const port = process.env.PORT || 6663;
+app.listen(port);
