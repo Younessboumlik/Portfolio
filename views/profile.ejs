@@ -71,8 +71,8 @@
 
     </div>
 <%}%>
-<%}%>
-<%if (res[0].status == "professor"){%>
+
+<%}else if (res[0].status == "professor"){%>
     <% for(let i = 0;i<res.length;i++){%>
         
         <div class = "divstddata">
@@ -96,6 +96,11 @@
     
         </div>
     <%}%>
+    
+        <%}else{%>
+        <div class = "divstddata">
+        <h1>No Result !<h1>
+        </div>
     <%}%>
 </div>
 

@@ -151,6 +151,12 @@ app.get('/profile' ,(req,res) => {
     )
            
        }
+    else{
+        db.query("select * from Users where user_id = ?",[id],function(err,result){
+            res.render("profile",{res:result});
+        })
+        
+    }
        })
 })
 app.get('/services' ,(req,res) => {
@@ -270,7 +276,12 @@ app.post("/chnangepassword", (req,res) =>{
     db.query("select password from Users where user_id = ?",[id],function(err,result){
         if (err) throw err;
         if (req.body.currentpassword == result[0].password && req.body.newpassword == req.body.confirmpassword){
-          
+          db.query("Update Users set password = ? where user_id = ?",[req.body.newpassword,id],function(err,result){
+            db.query("select photo from Users where user_id = ?",[id],function(err,result){
+                console.log(result)
+                   res.render("changepasswordwithsuccesss",{photo:result[0].photo})
+            })
+          })
         }
         else{
             db.query("select photo from Users where user_id = ?",[id],function(err,result){
@@ -305,6 +316,6 @@ app.post("/changewithsucces",(req,res)=>{
 
 // app.use(uploadProgress)
 
-const port = process.env.PORT || 6663;
+const port = process.env.PORT || 9997;
 app.listen(port);
 
