@@ -1,4 +1,9 @@
 // const { name } = require("ejs");
+window.history.pushState(null, "", window.location.href);        
+window.onpopstate = function() {
+    window.history.go(0);
+};
+
 
 function onScroll() {
   const infoElement = document.getElementsByClassName('info')[0];
